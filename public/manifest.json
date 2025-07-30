@@ -1,0 +1,16 @@
+{
+  "name": "Duendes Rugby Club",
+  "short_name": "Duendes RC",
+  "description": "Club deportivo de rugby con categorías para todas las edades",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#0ea5e9",
+  "background_color": "#ffffff",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ]
+}
