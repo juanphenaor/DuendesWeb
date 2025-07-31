@@ -172,7 +172,7 @@ const About = () => {
                 <div className="flex items-start space-x-4">
                   <div className="text-3xl">{category.icon}</div>
                   <div className="flex-1">
-                    <h3 className="font-sport font-bold text-lg text-dark-900 mb-2">
+                    <h3 className="font-sport font-semibold text-xl text-dark-900 mb-2">
                       {category.name}
                     </h3>
                     <div className="text-sm font-semibold text-gray-600 mb-3">
@@ -250,7 +250,7 @@ const About = () => {
                         <span className="text-2xl font-sport font-bold text-secondary-400">
                           {achievement.year}
                         </span>
-                        <h3 className="font-sport font-bold text-lg">
+                        <h3 className="font-sport font-semibold text-xl">
                           {achievement.title}
                         </h3>
                       </div>

@@ -11,8 +11,11 @@ import SocialMediaFloat from './components/SocialMediaFloat/SocialMediaFloat';
 import './index.css';
 
 function App() {
+  // Configuración de basename según el entorno
+  const basename = process.env.NODE_ENV === 'production' ? '/DuendesWeb' : '/';
+  
   return (
-    <Router basename={process.env.NODE_ENV === 'production' ? '/DuendesWeb' : ''}>
+    <Router basename={basename}>
       <div className="App min-h-screen bg-gray-50">
         <Navbar />
         <main>

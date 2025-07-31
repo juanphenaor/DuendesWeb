@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import PrivacyPolicyModal from '../PrivacyPolicyModal/PrivacyPolicyModal';
+import TermsOfUseModal from '../TermsOfUseModal/TermsOfUseModal';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false);
+  const [isTermsModalOpen, setIsTermsModalOpen] = useState(false);
 
   return (
     <footer className="bg-dark-950 text-white">
@@ -108,16 +112,32 @@ const Footer = () => {
               &copy; {currentYear} Duendes Rugby Club. Todos los derechos reservados.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
-              <a href="#" className="text-dark-300 hover:text-primary-500 transition-colors duration-300 text-sm">
+              <button 
+                onClick={() => setIsPrivacyModalOpen(true)}
+                className="text-dark-300 hover:text-primary-500 transition-colors duration-300 text-sm cursor-pointer"
+              >
                 Política de Privacidad
-              </a>
-              <a href="#" className="text-dark-300 hover:text-primary-500 transition-colors duration-300 text-sm">
+              </button>
+              <button 
+                onClick={() => setIsTermsModalOpen(true)}
+                className="text-dark-300 hover:text-primary-500 transition-colors duration-300 text-sm cursor-pointer"
+              >
                 Términos de Uso
-              </a>
+              </button>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Modales */}
+      <PrivacyPolicyModal 
+        isOpen={isPrivacyModalOpen} 
+        onClose={() => setIsPrivacyModalOpen(false)} 
+      />
+      <TermsOfUseModal 
+        isOpen={isTermsModalOpen} 
+        onClose={() => setIsTermsModalOpen(false)} 
+      />
     </footer>
   );
 };

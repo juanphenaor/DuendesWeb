@@ -167,7 +167,7 @@ const Contact = () => {
                 <div className="text-primary-600 mb-4 flex justify-center">
                   {info.icon}
                 </div>
-                <h3 className="font-sport font-bold text-lg text-dark-900 mb-3">
+                <h3 className="font-sport font-semibold text-xl text-dark-900 mb-3">
                   {info.title}
                 </h3>
                 <div className="space-y-1">

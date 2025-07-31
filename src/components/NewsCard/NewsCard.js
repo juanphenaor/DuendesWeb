@@ -47,7 +47,9 @@ const NewsCard = ({ news, onClick }) => {
 
       {/* Contenido */}
       <div className="p-6">
-        <h3 className="font-sport font-bold text-lg text-white mb-3 group-hover:text-secondary-500 transition-colors duration-300 line-clamp-2">
+        <h3 className="font-bold text-xl text-white mb-3 group-hover:text-secondary-500 transition-colors duration-300 line-clamp-2" style={{
+          fontFamily: '"Inter", "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif'
+        }}>
           {news.title}
         </h3>
         

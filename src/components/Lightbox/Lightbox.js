@@ -151,7 +151,7 @@ const Lightbox = ({ media, onClose, allMedia, currentIndex, onNavigate }) => {
                     {formatDate(media.date)}
                   </span>
                 </div>
-                <h3 className="text-lg font-sport font-bold mb-1">
+                <h3 className="text-xl font-sport font-semibold mb-1">
                   {media.title}
                 </h3>
                 <p className="text-sm text-gray-300">
