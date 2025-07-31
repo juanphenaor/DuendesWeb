@@ -17,7 +17,7 @@
     "start": "react-scripts start",
     "start:fresh": "npm start",
     "build": "react-scripts build",
-    "build:gh-pages": "PUBLIC_URL=/DuendesWeb react-scripts build",
+    "build:gh-pages": "cross-env PUBLIC_URL=/DuendesWeb react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build:gh-pages",
@@ -43,6 +43,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.7",
+    "cross-env": "^10.0.0",
     "gh-pages": "^6.3.0",
     "postcss": "^8.4.14",
     "tailwindcss": "^3.1.6"

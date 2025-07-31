@@ -1,6 +1,12 @@
 import React from 'react';
 
 const Hero = () => {
+  // Función para verificar si hoy es martes (2) o jueves (4)
+  const isTrainingDay = () => {
+    const today = new Date().getDay();
+    return today === 2 || today === 4; // 2 = martes, 4 = jueves
+  };
+
   return (
     <section 
       className="relative min-h-screen flex items-center overflow-hidden"
@@ -19,7 +25,7 @@ const Hero = () => {
       </div>
 
       <div className="container-custom relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-screen py-20">
+        <div className={`grid grid-cols-1 ${isTrainingDay() ? 'lg:grid-cols-2' : 'lg:grid-cols-2'} gap-12 items-center min-h-screen py-20`}>
           {/* Contenido principal */}
           <div className="text-white animate-fade-in">
             <div className="mb-6">
@@ -63,6 +69,20 @@ const Hero = () => {
               </div>
             </div>
           </div>
+
+          {/* Imagen de entrenamientos - Solo visible martes y jueves */}
+          {isTrainingDay() && (
+            <div className="relative animate-fade-in-down">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                <img
+                  src="./Entrenamientos.jpg"
+                  alt="Entrenamientos Duendes Rugby Club"
+                  className="w-full h-auto object-cover"
+                />
+               
+              </div>
+            </div>
+          )}
         </div>
       </div>
 

@@ -17,7 +17,7 @@ function App() {
   return (
     <Router basename={basename}>
       <div className="App min-h-screen bg-gray-50">
-        <Navbar />
+        {/* <Navbar /> */}
         <main>
           <Routes>
             <Route path="/" element={<Home />} />

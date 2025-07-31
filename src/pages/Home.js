@@ -10,105 +10,131 @@ const Home = () => {
   const newsData = [
     {
       id: 1,
-      title: "Victoria épica contra Los Leones RFC",
-      excerpt: "En un partido emocionante, nuestro equipo senior logró una victoria por 24-18 contra Los Leones RFC en el estadio municipal.",
-      fullContent: `En un encuentro que mantuvo a todos los aficionados al borde de sus asientos, el Duendes Rugby Club se enfrentó a Los Leones RFC en lo que muchos consideran el partido del año.
+      title: "🏖️ Primer Torneo de Rugby Playa - 10 de Agosto",
+      excerpt: "¡Los invitamos a TODOS a disfrutar de nuestro primer torneo de Rugby Playa! Habrá premiación, hidratación y snacks para todos los equipos.",
+      fullContent: `¡Prepárense para vivir el rugby como nunca antes! 🏉🏖️
 
-El encuentro comenzó con una intensa presión por parte de Los Leones, quienes lograron anotar los primeros puntos del partido con un drop goal a los 8 minutos. Sin embargo, nuestros Duendes no tardaron en responder con una jugada magistral que culminó con un try de nuestro capitán, Juan Martínez.
+Este 10 de agosto los invitamos a TODOS a disfrutar de nuestro primer torneo de Rugby Playa 🏖️🏉
 
-El segundo tiempo fue una demostración de garra y determinación. A pesar de estar perdiendo 18-12 a los 60 minutos, el equipo no bajó los brazos. Una serie de jugadas perfectamente ejecutadas permitió remontar el marcador, con tries de Carlos Rodríguez y Miguel Ángel Fernández.
+¿Qué incluye el evento?
+✓ Habrá premiación para los equipos ganadores
+✓ Hidratación gratuita durante todo el torneo
+✓ Snacks para todos los equipos participantes
+✓ Ambiente familiar y divertido
+✓ Música y entretenimiento
 
-La victoria no solo nos acerca a los playoffs, sino que también demuestra el excelente trabajo que se está realizando en el club. El entrenador destacó el espíritu de equipo y la dedicación de todos los jugadores.
+¿Quieres ser parte? ¡Escríbenos en nuestras redes y asegura tu cupo! 💬
 
-¡Próximo partido el sábado contra Gladiadores RC!`,
-      image: "/api/placeholder/800/400",
-      date: "2025-01-25",
-      category: "Primer Equipo"
+Modalidades de participación:
+- Rugby Playa masculino
+- Rugby Playa femenino  
+- Rugby Playa mixto
+- Categorías juveniles
+
+El rugby playa es una variante emocionante que combina la técnica del rugby tradicional con la diversión y agilidad que aporta jugar en la arena. ¡Es perfecto para todos los niveles!
+
+Lugar: Playa Municipal
+Hora: 9:00 AM - 6:00 PM
+Inscripciones: A través de nuestras redes sociales
+
+¡Vamos a vivir el rugby como nunca antes! 💥
+
+Más información en: https://www.instagram.com/p/DMdf3maRiv6/`,
+      image: "./RugbyPlaya.png",
+      date: "2025-08-10",
+      category: "Torneo Especial"
     },
     {
       id: 2,
-      title: "Nuevas instalaciones de entrenamiento",
-      excerpt: "El club inaugura nuevas instalaciones que incluyen un gimnasio moderno y vestuarios renovados para mejorar la experiencia de todos nuestros jugadores.",
-      fullContent: `El Duendes Rugby Club ha dado un gran paso adelante con la inauguración de sus nuevas instalaciones de entrenamiento, que marcan un hito importante en la historia del club.
+      title: "💙 Adopta a un Duendón",
+      excerpt: "Ayúdanos a que ninguno de nuestros jóvenes se quede fuera del rugby por falta de recursos. Con tu aporte, cubrimos mensualidades e implementos deportivos.",
+      fullContent: `¡Únete a nuestra causa y transforma vidas! 💙
 
-Las nuevas instalaciones incluyen:
-- Gimnasio completamente equipado con maquinaria de última generación
-- Vestuarios renovados con taquillas individuales
-- Sala de fisioterapia y recuperación
-- Área de análisis de video para estudiar jugadas
-- Zona de hidratación y nutrición
+Adopta a un Duendón 🏉
 
-Estas mejoras han sido posibles gracias al esfuerzo conjunto de socios, patrocinadores y la junta directiva del club. La inversión de más de 150,000 euros refleja nuestro compromiso con la excelencia deportiva.
+Ayúdanos a que ninguno de nuestros jóvenes se quede fuera del rugby por falta de recursos.
 
-"Estas instalaciones no solo beneficiarán a nuestros jugadores actuales, sino que también nos permitirán atraer nuevos talentos y ofrecer un mejor servicio a toda la comunidad rugbier", comentó el presidente del club.
+¿Qué significa adoptar a un Duendón?
+✓ Cubrir mensualidades de entrenamiento
+✓ Proporcionar implementos deportivos necesarios
+✓ Garantizar acceso a uniformes y equipamiento
+✓ Apoyar el transporte a entrenamientos y torneos
+✓ Brindar oportunidades de desarrollo integral
 
-La inauguración oficial será el próximo viernes con la presencia de autoridades locales y exjugadores del club.`,
-      image: "/api/placeholder/800/400",
-      date: "2025-01-22",
-      category: "Club"
+Con tu aporte mensual, le das la oportunidad a un joven de:
+- Desarrollar habilidades deportivas y personales
+- Fortalecer valores como disciplina y trabajo en equipo
+- Acceder a un entorno seguro y estructurado
+- Participar en torneos y competencias
+- Construir un futuro mejor a través del deporte
+
+Tu contribución no solo impacta la vida de un joven, sino que fortalece toda nuestra comunidad rugby. Cada Duendón adoptado es una vida transformada, una familia apoyada y un futuro más prometedor.
+
+¿Cómo puedes ser parte?
+📩 Escríbenos y sé parte de esta causa
+
+Juntos podemos hacer que el rugby sea accesible para todos. ¡Adopta a un Duendón hoy y sé parte de esta transformación social!
+
+💬 Contáctanos a través de nuestras redes sociales o escríbenos directamente.
+
+¡Tu apoyo hace la diferencia! 🌟`,
+      image: "./AdoptaUnDuendon.png",
+      date: "2025-01-25",
+      category: "Causa Social"
     },
     {
       id: 3,
-      title: "Escuela de Rugby: Abierta la inscripción",
-      excerpt: "Ya está abierta la inscripción para la escuela de rugby dirigida a niños y niñas de 6 a 16 años. ¡Únete y descubre la pasión por el rugby!",
-      fullContent: `¡La Escuela de Rugby Duendes abre sus puertas para una nueva temporada llena de diversión, aprendizaje y valores deportivos!
+      title: "🏆 ¡Campeonas! Equipo Femenino Duendes",
+      excerpt: "¡Celebramos con orgullo! Nuestro equipo femenino se coronó campeón del torneo Primera Femenino el 9 de julio. ¡Únete a nuestro equipo!",
+      fullContent: `¡CAMPEONAS! 🏆👑
 
-Nuestra escuela está dirigida a niños y niñas de 6 a 16 años, divididos en las siguientes categorías:
-- Pre-rugby (6-8 años): Iniciación lúdica al deporte
-- Infantil (9-12 años): Fundamentos básicos del rugby
-- Juvenil (13-16 años): Técnica avanzada y competición
+El 9 de julio de 2025 será una fecha histórica para el Duendes Rugby Club 💜
 
-¿Qué ofrecemos?
-✓ Entrenadores titulados y con experiencia
-✓ Entrenamientos 3 veces por semana
-✓ Participación en torneos regionales
-✓ Equipamiento completo incluido
-✓ Seguro médico deportivo
-✓ Valores como respeto, trabajo en equipo y disciplina
+Nuestro equipo femenino se coronó CAMPEÓN del torneo Primera Femenino en una final emocionante que demostró la garra, técnica y espíritu de nuestras guerreras.
 
-Los entrenamientos se realizan en nuestras instalaciones los martes, jueves y sábados. Incluimos clases de inglés deportivo para familiarizar a los jóvenes con la terminología internacional del rugby.
+🌟 Un triunfo que representa mucho más que un título:
+✓ Meses de entrenamiento dedicado y disciplina
+✓ Trabajo en equipo y hermandad inquebrantable  
+✓ Superación de desafíos y crecimiento personal
+✓ Inspiración para toda nuestra comunidad
+✓ Demostración del talento femenino en el rugby
 
-Precio especial de lanzamiento: 45€/mes (incluye todo el material)
-Descuentos especiales para hermanos y familias numerosas.
+Este logro no solo nos llena de orgullo, sino que refuerza nuestro compromiso con el rugby femenino y la igualdad en el deporte.
 
-¡No pierdas esta oportunidad de formar parte de la familia Duendes!`,
-      image: "/api/placeholder/800/400",
-      date: "2025-01-20",
-      category: "Cantera"
-    },
-    {
-      id: 4,
-      title: "Torneo benéfico 'Rugby por la Esperanza'",
-      excerpt: "El próximo mes organizaremos un torneo benéfico para recaudar fondos destinados a organizaciones locales de ayuda social.",
-      fullContent: `El Duendes Rugby Club se enorgullece de anunciar la organización del torneo benéfico "Rugby por la Esperanza", que se celebrará el próximo 15 de febrero en nuestras instalaciones.
+🚀 ¿Eres mujer y quieres ser parte de esta historia?
 
-Este evento especial tiene como objetivo recaudar fondos para tres organizaciones benéficas locales:
-- Fundación Niños del Futuro
-- Asociación de Ayuda a Personas Mayores
-- Centro de Acogida San Francisco
+¡TE INVITAMOS A UNIRTE A NUESTRO EQUIPO FEMENINO! 
 
-El torneo contará con la participación de 8 equipos de la región, incluyendo:
-- Equipos veteranos (mayores de 35 años)
-- Equipos femeninos
-- Equipos juveniles
-- Exhibición de rugby infantil
+Buscamos mujeres adultas y jóvenes que quieran:
+- Aprender y disfrutar del rugby
+- Formar parte de una familia deportiva
+- Desarrollar fuerza, técnica y estrategia
+- Competir en torneos locales y nacionales
+- Vivir la experiencia del rugby femenino
 
-Programa del día:
-- 9:00h: Inauguración y desayuno solidario
-- 10:00h: Inicio de partidos juveniles
-- 12:00h: Partidos femeninos
-- 14:00h: Comida popular (paella gigante)
-- 16:00h: Partidos veteranos
-- 18:00h: Final y entrega de premios
-- 19:30h: Cena de confraternización
+No importa tu nivel de experiencia:
+✓ Principiantes: Te enseñamos desde cero con paciencia y dedicación
+✓ Con experiencia: Perfecciona tu técnica y crece con nosotras
+✓ Jóvenes: Desarrolla tu potencial en un ambiente seguro
+✓ Adultas: Nunca es tarde para empezar una nueva pasión
 
-Entrada solidaria: 5€ adultos, 2€ niños
-Los fondos recaudados se destinarán íntegramente a las organizaciones beneficiarias.
+🏉 ¿Qué ofrecemos?
+- Entrenamientos profesionales 3 veces por semana
+- Ambiente inclusivo y de apoyo mutuo
+- Participación en competencias oficiales
+- Equipamiento y uniformes
+- Acompañamiento integral
 
-¡Te esperamos para vivir una jornada inolvidable de rugby y solidaridad!`,
-      image: "/api/placeholder/800/400",
-      date: "2025-01-18",
-      category: "Eventos"
+💬 ¿Lista para ser la próxima campeona?
+
+Escríbenos por nuestras redes sociales o ven directamente a conocer nuestras instalaciones. ¡Te esperamos con los brazos abiertos!
+
+¡El rugby femenino está creciendo y TÚ puedes ser parte de esta revolución! 🌟
+
+#RugbyFemenino #CampeonasDE #DuendesRugby #MujeresEnElDeporte`,
+      image: "./FemeninoCampeon.png",
+      date: "2025-07-09",
+      category: "Rugby Femenino"
     }
   ];
 
@@ -226,21 +252,16 @@ Los fondos recaudados se destinarán íntegramente a las organizaciones benefici
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {newsData.map((news) => (
-              <NewsCard
-                key={news.id}
-                news={news}
-                onClick={() => openNewsModal(news)}
-              />
-            ))}
-          </div>
-
-          {/* Ver más noticias */}
-          <div className="text-center mt-12">
-            <button className="bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white font-bold py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
-              Ver más noticias
-            </button>
+          <div className="flex justify-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl">
+              {newsData.map((news) => (
+                <NewsCard
+                  key={news.id}
+                  news={news}
+                  onClick={() => openNewsModal(news)}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>

@@ -40,6 +40,9 @@ const NewsModal = ({ news, onClose }) => {
       'Club': 'bg-secondary-500',
       'Cantera': 'bg-green-500',
       'Eventos': 'bg-purple-500',
+      'Torneo Especial': 'bg-orange-500',
+      'Causa Social': 'bg-pink-500',
+      'Rugby Femenino': 'bg-purple-600',
     };
     return colors[category] || 'bg-gray-500';
   };
@@ -53,56 +56,43 @@ const NewsModal = ({ news, onClose }) => {
       />
       
       {/* Modal */}
-      <div className="flex min-h-full items-center justify-center p-4">
-        <div className="relative bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden animate-slide-up">
-          {/* Header con imagen */}
-          <div className="relative h-64 md:h-80">
+      <div className="flex min-h-full items-center justify-center p-4 py-8">
+        <div className="relative bg-white rounded-2xl shadow-2xl w-full max-w-4xl animate-slide-up">
+          {/* Header con imagen al 70% del alto */}
+          <div className="relative bg-white flex-shrink-0 rounded-t-2xl overflow-hidden">
             <img
               src={news.image}
               alt={news.title}
-              className="w-full h-full object-cover"
+              className="w-full object-contain"
+              style={{ height: '80vh' }}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-dark-900/80 to-transparent" />
+            
             
             {/* Botón cerrar */}
             <button
               onClick={onClose}
-              className="absolute top-4 right-4 bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white rounded-full p-2 transition-colors duration-300"
+              className="absolute top-4 right-4 bg-black/40 backdrop-blur-sm hover:bg-black/60 text-white rounded-full p-2 transition-colors duration-300 shadow-lg z-10"
               aria-label="Cerrar modal"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
-
-            {/* Categoría y fecha */}
-            <div className="absolute bottom-4 left-4 right-4">
-              <div className="flex items-center justify-between">
-                <span className={`${getCategoryColor(news.category)} text-white text-sm font-semibold px-4 py-2 rounded-full`}>
-                  {news.category}
-                </span>
-                <div className="bg-white/90 backdrop-blur-sm rounded-lg px-4 py-2">
-                  <span className="text-sm font-medium text-dark-900">
-                    {formatDate(news.date)}
-                  </span>
-                </div>
-              </div>
-            </div>
           </div>
 
           {/* Contenido */}
-          <div className="p-6 md:p-8 overflow-y-auto max-h-96">
-            <h1 className="font-sport font-bold text-2xl md:text-3xl text-dark-900 mb-6 leading-tight">
+          <div className="flex-1 p-6">
+            <h1 className="font-sport font-bold text-2xl md:text-3xl text-dark-900 mb-4 leading-tight">
               {news.title}
             </h1>
             
-            <div className="prose prose-lg max-w-none">
+            <div className="prose prose-base max-w-none">
               {news.fullContent.split('\n\n').map((paragraph, index) => {
                 // Si el párrafo contiene viñetas (✓), renderizarlo como lista
                 if (paragraph.includes('✓')) {
                   const items = paragraph.split('\n').filter(item => item.trim());
                   return (
-                    <ul key={index} className="space-y-2 mb-6">
+                    <ul key={index} className="space-y-2 mb-4">
                       {items.map((item, itemIndex) => (
                         <li key={itemIndex} className="flex items-start space-x-2">
                           <svg className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
@@ -119,7 +109,7 @@ const NewsModal = ({ news, onClose }) => {
                 if (paragraph.includes('- ')) {
                   const items = paragraph.split('\n').filter(item => item.trim() && item.includes('- '));
                   return (
-                    <ul key={index} className="list-disc list-inside space-y-1 mb-6 text-gray-700">
+                    <ul key={index} className="list-disc list-inside space-y-1 mb-4 text-gray-700">
                       {items.map((item, itemIndex) => (
                         <li key={itemIndex}>{item.replace('- ', '')}</li>
                       ))}
@@ -127,9 +117,27 @@ const NewsModal = ({ news, onClose }) => {
                   );
                 }
                 
+                // Si el párrafo contiene un enlace de Instagram, renderizarlo como enlace
+                if (paragraph.includes('https://www.instagram.com/')) {
+                  const parts = paragraph.split('https://www.instagram.com/');
+                  return (
+                    <p key={index} className="text-gray-700 leading-relaxed mb-3">
+                      {parts[0]}
+                      <a 
+                        href={`https://www.instagram.com/${parts[1]}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-600 hover:text-blue-800 underline font-medium"
+                      >
+                        https://www.instagram.com/{parts[1]}
+                      </a>
+                    </p>
+                  );
+                }
+                
                 // Párrafo normal
                 return (
-                  <p key={index} className="text-gray-700 leading-relaxed mb-4">
+                  <p key={index} className="text-gray-700 leading-relaxed mb-3">
                     {paragraph}
                   </p>
                 );
@@ -137,7 +145,7 @@ const NewsModal = ({ news, onClose }) => {
             </div>
 
             {/* Botones de acción */}
-            <div className="flex flex-col sm:flex-row gap-4 mt-8 pt-6 border-t border-gray-200">
+            <div className="flex flex-col sm:flex-row gap-3 mt-6 pt-4 border-t border-gray-200">
               <button className="btn-primary flex-1">
                 Compartir noticia
               </button>
