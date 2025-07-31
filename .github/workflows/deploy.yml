@@ -2,9 +2,9 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [ main, master, Development ]
   pull_request:
-    branches: [ main, master ]
+    branches: [ main, master, Development ]
 
 permissions:
   contents: read
@@ -34,7 +34,10 @@ jobs:
       
     - name: Build project
       run: npm run build
-      
+      env:
+        CI: false
+        PUBLIC_URL: /DuendesWeb
+        
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
       with:
