@@ -47,6 +47,48 @@ const NewsModal = ({ news, onClose }) => {
     return colors[category] || 'bg-gray-500';
   };
 
+  const handleShare = async () => {
+    const shareData = {
+      title: news.title,
+      text: `${news.title} - Duendes Rugby Club`,
+      url: window.location.href
+    };
+
+    try {
+      // Verificar si el navegador soporta Web Share API
+      if (navigator.share && navigator.canShare && navigator.canShare(shareData)) {
+        await navigator.share(shareData);
+      } else {
+        // Fallback: copiar al portapapeles
+        await navigator.clipboard.writeText(window.location.href);
+        
+        // Mostrar notificación temporal
+        const notification = document.createElement('div');
+        notification.textContent = '¡Enlace copiado al portapapeles!';
+        notification.className = 'fixed top-4 right-4 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg z-50 animate-bounce';
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+          document.body.removeChild(notification);
+        }, 3000);
+      }
+    } catch (error) {
+      console.log('Error al compartir:', error);
+      
+      // Fallback adicional si clipboard también falla
+      const shareUrl = window.location.href;
+      const shareText = `Te comparto esta noticia: ${news.title} - ${shareUrl}`;
+      
+      // Intentar abrir el selector de apps nativo en móviles
+      if (navigator.userAgent.match(/Android|iPhone|iPad|iPod/i)) {
+        window.open(`https://wa.me/?text=${encodeURIComponent(shareText)}`, '_blank');
+      } else {
+        // En escritorio, mostrar el enlace en un alert
+        window.prompt('Copia este enlace para compartir:', shareUrl);
+      }
+    }
+  };
+
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto">
       {/* Overlay */}
@@ -86,7 +128,7 @@ const NewsModal = ({ news, onClose }) => {
               {news.title}
             </h1>
             
-            <div className="prose prose-base max-w-none">
+            <div className="prose prose-base max-w-none pb-20">
               {news.fullContent.split('\n\n').map((paragraph, index) => {
                 // Si el párrafo contiene viñetas (✓), renderizarlo como lista
                 if (paragraph.includes('✓')) {
@@ -144,19 +186,20 @@ const NewsModal = ({ news, onClose }) => {
               })}
             </div>
 
-            {/* Botones de acción */}
-            <div className="flex flex-col sm:flex-row gap-3 mt-6 pt-4 border-t border-gray-200 sticky bottom-0 bg-white">
-              <button className="btn-primary flex-1 text-sm sm:text-base">
-                Compartir noticia
-              </button>
-              <button 
-                onClick={onClose}
-                className="btn-outline flex-1 text-sm sm:text-base"
-              >
-                Cerrar
-              </button>
-            </div>
+
           </div>
+
+          {/* Botón flotante de compartir */}
+          <button 
+            onClick={handleShare}
+            className="fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-primary-500 hover:bg-primary-600 text-white rounded-full px-6 py-3 shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm sm:text-base font-medium z-30 backdrop-blur-sm"
+            style={{ zIndex: 30 }}
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z" />
+            </svg>
+            Compartir noticia
+          </button>
         </div>
       </div>
     </div>
