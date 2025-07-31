@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/DuendesWeb/static/css/main.1cc05f4f.css",
-    "main.js": "/DuendesWeb/static/js/main.86848292.js",
+    "main.js": "/DuendesWeb/static/js/main.22f62ed6.js",
     "index.html": "/DuendesWeb/index.html",
     "main.1cc05f4f.css.map": "/DuendesWeb/static/css/main.1cc05f4f.css.map",
-    "main.86848292.js.map": "/DuendesWeb/static/js/main.86848292.js.map"
+    "main.22f62ed6.js.map": "/DuendesWeb/static/js/main.22f62ed6.js.map"
   },
   "entrypoints": [
     "static/css/main.1cc05f4f.css",
-    "static/js/main.86848292.js"
+    "static/js/main.22f62ed6.js"
   ]
 }
