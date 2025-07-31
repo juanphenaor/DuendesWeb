@@ -51,15 +51,15 @@ const Hero = () => {
             <div className="grid grid-cols-3 gap-6 mt-12 pt-8 border-t border-gray-600">
               <div className="text-center">
                 <div className="text-3xl md:text-4xl font-sport font-bold text-blue-400">15+</div>
-                <div className="text-sm text-gray-300 uppercase tracking-wide">Años de Historia</div>
+                <div className="text-sm text-white uppercase tracking-wide font-medium">Años de Historia</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl md:text-4xl font-sport font-bold text-blue-400">120+</div>
-                <div className="text-sm text-gray-300 uppercase tracking-wide">Jugadores</div>
+                <div className="text-sm text-white uppercase tracking-wide font-medium">Jugadores</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl md:text-4xl font-sport font-bold text-blue-400">5</div>
-                <div className="text-sm text-gray-300 uppercase tracking-wide">Categorías</div>
+                <div className="text-sm text-white uppercase tracking-wide font-medium">Categorías</div>
               </div>
             </div>
           </div>

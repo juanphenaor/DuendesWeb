@@ -128,7 +128,7 @@ Los fondos recaudados se destinarán íntegramente a las organizaciones benefici
       <section className="section-padding bg-gradient-to-br from-slate-100 via-blue-50 to-slate-200">
         <div className="container-custom">
           <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-sport font-bold text-dark-900 mb-4">
+            <h2 className="text-4xl md:text-5xl font-sport font-semibold text-dark-900 mb-4">
               Últimas <span className="text-primary-600">Noticias</span>
             </h2>
             <p className="text-lg text-dark-600 max-w-2xl mx-auto">
