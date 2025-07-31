@@ -5,7 +5,7 @@ const Hero = () => {
     <section 
       className="relative min-h-screen flex items-center overflow-hidden"
       style={{
-        backgroundImage: `linear-gradient(rgba(11, 12, 16, 0.8), rgba(11, 12, 16, 0.6)), url('/Escudo con fondo.png')`,
+        backgroundImage: `linear-gradient(rgba(11, 12, 16, 0.8), rgba(11, 12, 16, 0.6)), url('Escudo con fondo.png')`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat'
