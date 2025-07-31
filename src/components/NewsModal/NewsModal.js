@@ -56,23 +56,23 @@ const NewsModal = ({ news, onClose }) => {
       />
       
       {/* Modal */}
-      <div className="flex min-h-full items-center justify-center p-4 py-8">
-        <div className="relative bg-white rounded-2xl shadow-2xl w-full max-w-4xl animate-slide-up">
-          {/* Header con imagen al 70% del alto */}
-          <div className="relative bg-white flex-shrink-0 rounded-t-2xl overflow-hidden">
+      <div className="flex min-h-full items-center justify-center p-0 sm:p-4 sm:py-8">
+        <div className="relative bg-white rounded-none sm:rounded-2xl shadow-2xl w-full max-w-4xl animate-slide-up h-full sm:h-auto max-h-full overflow-hidden">
+          {/* Header con imagen */}
+          <div className="relative bg-white flex-shrink-0 rounded-none sm:rounded-t-2xl overflow-hidden p-0">
             <img
               src={news.image}
               alt={news.title}
-              className="w-full object-contain"
-              style={{ height: '80vh' }}
+              className="w-full object-cover max-h-[50vh] sm:object-contain sm:max-h-[70vh] block"
+              style={{ display: 'block', marginTop: 0 }}
             />
             
-            
-            {/* Botón cerrar */}
+            {/* Botón cerrar - flotando sobre la imagen */}
             <button
               onClick={onClose}
-              className="absolute top-4 right-4 bg-black/40 backdrop-blur-sm hover:bg-black/60 text-white rounded-full p-2 transition-colors duration-300 shadow-lg z-10"
+              className="absolute top-2 right-2 bg-black/40 backdrop-blur-sm hover:bg-black/60 text-white rounded-full p-2 transition-colors duration-300 shadow-lg z-20"
               aria-label="Cerrar modal"
+              style={{ zIndex: 20 }}
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -80,9 +80,9 @@ const NewsModal = ({ news, onClose }) => {
             </button>
           </div>
 
-          {/* Contenido */}
-          <div className="flex-1 p-6">
-            <h1 className="font-sport font-bold text-2xl md:text-3xl text-dark-900 mb-4 leading-tight">
+          {/* Contenido - scrolleable en mobile */}
+          <div className="flex-1 p-4 sm:p-6 overflow-y-auto max-h-[50vh] sm:max-h-none">
+            <h1 className="font-sport font-bold text-xl sm:text-2xl md:text-3xl text-dark-900 mb-4 leading-tight">
               {news.title}
             </h1>
             
@@ -145,13 +145,13 @@ const NewsModal = ({ news, onClose }) => {
             </div>
 
             {/* Botones de acción */}
-            <div className="flex flex-col sm:flex-row gap-3 mt-6 pt-4 border-t border-gray-200">
-              <button className="btn-primary flex-1">
+            <div className="flex flex-col sm:flex-row gap-3 mt-6 pt-4 border-t border-gray-200 sticky bottom-0 bg-white">
+              <button className="btn-primary flex-1 text-sm sm:text-base">
                 Compartir noticia
               </button>
               <button 
                 onClick={onClose}
-                className="btn-outline flex-1"
+                className="btn-outline flex-1 text-sm sm:text-base"
               >
                 Cerrar
               </button>

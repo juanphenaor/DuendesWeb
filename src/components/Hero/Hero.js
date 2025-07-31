@@ -43,15 +43,6 @@ const Hero = () => {
               Pasión, garra y compañerismo. Únete a nuestra familia rugbier y vive 
               la emoción del deporte oval.
             </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4">
-              <button className="bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white font-bold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg text-center">
-                Únete al Club
-              </button>
-              <button className="border-2 border-primary-500 text-primary-400 hover:bg-primary-500 hover:text-white font-bold py-4 px-8 rounded-lg transition-all duration-300 text-center">
-                Conoce Más
-              </button>
-            </div>
 
             {/* Estadísticas */}
             <div className="grid grid-cols-3 gap-6 mt-12 pt-8 border-t border-gray-600">
