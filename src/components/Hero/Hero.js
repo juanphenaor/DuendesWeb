@@ -1,9 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center hero-gradient overflow-hidden">
+    <section 
+      className="relative min-h-screen flex items-center overflow-hidden"
+      style={{
+        backgroundImage: `linear-gradient(rgba(11, 12, 16, 0.8), rgba(11, 12, 16, 0.6)), url('/Escudo con fondo.png')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
+    >
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0" style={{
@@ -16,14 +23,14 @@ const Hero = () => {
           {/* Contenido principal */}
           <div className="text-white animate-fade-in">
             <div className="mb-6">
-              <span className="inline-block px-4 py-2 bg-secondary-500 text-dark-900 rounded-full text-sm font-semibold uppercase tracking-wide">
+              <span className="inline-block px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-full text-sm font-semibold uppercase tracking-wide shadow-lg">
                 Club Deportivo
               </span>
             </div>
             
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-sport font-bold leading-tight mb-6">
               DUENDES
-              <span className="block text-secondary-400">RUGBY CLUB</span>
+              <span className="block text-blue-400">RUGBY CLUB</span>
             </h1>
             
             <p className="text-xl md:text-2xl text-gray-200 mb-8 max-w-lg leading-relaxed">
@@ -32,26 +39,26 @@ const Hero = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link to="/inscripcion" className="btn-primary text-center">
+              <button className="bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white font-bold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg text-center">
                 Únete al Club
-              </Link>
-              <Link to="/nosotros" className="btn-outline text-center">
+              </button>
+              <button className="border-2 border-primary-500 text-primary-400 hover:bg-primary-500 hover:text-white font-bold py-4 px-8 rounded-lg transition-all duration-300 text-center">
                 Conoce Más
-              </Link>
+              </button>
             </div>
 
             {/* Estadísticas */}
             <div className="grid grid-cols-3 gap-6 mt-12 pt-8 border-t border-gray-600">
               <div className="text-center">
-                <div className="text-3xl md:text-4xl font-sport font-bold text-secondary-400">15+</div>
+                <div className="text-3xl md:text-4xl font-sport font-bold text-blue-400">15+</div>
                 <div className="text-sm text-gray-300 uppercase tracking-wide">Años de Historia</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl md:text-4xl font-sport font-bold text-secondary-400">120+</div>
+                <div className="text-3xl md:text-4xl font-sport font-bold text-blue-400">120+</div>
                 <div className="text-sm text-gray-300 uppercase tracking-wide">Jugadores</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl md:text-4xl font-sport font-bold text-secondary-400">5</div>
+                <div className="text-3xl md:text-4xl font-sport font-bold text-blue-400">5</div>
                 <div className="text-sm text-gray-300 uppercase tracking-wide">Categorías</div>
               </div>
             </div>
@@ -61,7 +68,7 @@ const Hero = () => {
           <div className="relative animate-slide-up">
             <div className="relative">
               {/* Imagen principal */}
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-500">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-500">
                 <img
                   src="/api/placeholder/600/800"
                   alt="Duendes Rugby Club en acción"
@@ -69,19 +76,6 @@ const Hero = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-dark-900/50 to-transparent" />
               </div>
-              
-              {/* Elementos decorativos */}
-              <div className="absolute -top-6 -right-6 w-24 h-24 bg-secondary-500 rounded-full opacity-80 animate-bounce-slow" />
-              <div className="absolute -bottom-6 -left-6 w-16 h-16 bg-primary-500 rounded-full opacity-80 animate-bounce-slow" style={{animationDelay: '1s'}} />
-            </div>
-
-            {/* Video de fondo alternativo */}
-            <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-xl p-4 shadow-lg">
-              <div className="flex items-center space-x-2">
-                <div className="w-3 h-3 bg-red-500 rounded-full animate-pulse" />
-                <span className="text-sm font-medium text-dark-900">En vivo</span>
-              </div>
-              <p className="text-xs text-gray-600 mt-1">Entrenamiento del día</p>
             </div>
           </div>
         </div>
