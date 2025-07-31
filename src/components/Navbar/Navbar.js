@@ -32,14 +32,26 @@ const Navbar = () => {
     }`}>
       <div className="container-custom">
         <div className="flex items-center justify-between h-16 lg:h-20">
-          {/* Logo */}
-          <Link to="/" className="flex items-center space-x-3">
-            <div className="w-10 h-10 lg:w-12 lg:h-12 bg-primary-600 rounded-full flex items-center justify-center">
-              <span className="text-white font-sport font-bold text-lg lg:text-xl">D</span>
-            </div>
+          {/* Logo de texto únicamente */}
+          <Link to="/" className="hover:opacity-80 transition-opacity duration-300">
             <div className="text-white">
-              <div className="font-sport font-bold text-lg lg:text-xl">DUENDES</div>
-              <div className="font-sans text-xs lg:text-sm text-dark-300">Rugby Club</div>
+              {/* Título principal "Duendes" - estilo del escudo */}
+              <div className="font-black text-2xl lg:text-3xl tracking-wider uppercase" 
+                   style={{
+                     fontFamily: 'Impact, "Arial Black", "Helvetica Condensed", sans-serif',
+                     textShadow: '2px 2px 4px rgba(0,0,0,0.8)',
+                     letterSpacing: '0.1em'
+                   }}>
+                DUENDES
+              </div>
+              {/* Subtítulo "Rugby Club" - estilo del escudo */}
+              <div className="font-bold text-sm lg:text-base tracking-widest uppercase text-gray-200 -mt-1" 
+                   style={{
+                     fontFamily: 'Impact, "Arial Black", "Helvetica Condensed", sans-serif',
+                     letterSpacing: '0.2em'
+                   }}>
+                RUGBY CLUB
+              </div>
             </div>
           </Link>
 
