@@ -63,21 +63,6 @@ const Hero = () => {
               </div>
             </div>
           </div>
-
-          {/* Imagen/Video placeholder */}
-          <div className="relative animate-slide-up">
-            <div className="relative">
-              {/* Imagen principal */}
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-500">
-                <img
-                  src="/api/placeholder/600/800"
-                  alt="Duendes Rugby Club en acción"
-                  className="w-full h-auto object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-dark-900/50 to-transparent" />
-              </div>
-            </div>
-          </div>
         </div>
       </div>
 
