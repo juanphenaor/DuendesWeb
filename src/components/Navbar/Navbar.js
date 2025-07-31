@@ -35,7 +35,7 @@ const Navbar = () => {
           {/* Logo */}
           <Link to="/" className="hover:opacity-80 transition-opacity duration-300">
             <img 
-              src="/icon.PNG" 
+              src="icon.PNG" 
               alt="Duendes Rugby Club" 
               className="w-10 h-10 lg:w-12 lg:h-12 object-contain"
             />

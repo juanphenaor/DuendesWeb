@@ -137,7 +137,7 @@ Los fondos recaudados se destinarán íntegramente a las organizaciones benefici
                 className="block transform transition-transform duration-300 hover:scale-105 shadow-lg hover:shadow-2xl rounded-lg overflow-hidden max-w-lg"
               >
                 <img
-                  src="/QR-Duendes.jpeg"
+                  src="QR-Duendes.jpeg"
                   alt="Código QR - Un Try a la Vida"
                   className="w-full h-auto object-contain rounded-lg"
                 />
