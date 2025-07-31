@@ -32,27 +32,13 @@ const Navbar = () => {
     }`}>
       <div className="container-custom">
         <div className="flex items-center justify-between h-16 lg:h-20">
-          {/* Logo de texto únicamente */}
+          {/* Logo */}
           <Link to="/" className="hover:opacity-80 transition-opacity duration-300">
-            <div className="text-white">
-              {/* Título principal "Duendes" - estilo del escudo */}
-              <div className="font-black text-2xl lg:text-3xl tracking-wider uppercase" 
-                   style={{
-                     fontFamily: 'Impact, "Arial Black", "Helvetica Condensed", sans-serif',
-                     textShadow: '2px 2px 4px rgba(0,0,0,0.8)',
-                     letterSpacing: '0.1em'
-                   }}>
-                DUENDES
-              </div>
-              {/* Subtítulo "Rugby Club" - estilo del escudo */}
-              <div className="font-bold text-sm lg:text-base tracking-widest uppercase text-gray-200 -mt-1" 
-                   style={{
-                     fontFamily: 'Impact, "Arial Black", "Helvetica Condensed", sans-serif',
-                     letterSpacing: '0.2em'
-                   }}>
-                RUGBY CLUB
-              </div>
-            </div>
+            <img 
+              src="/icon.PNG" 
+              alt="Duendes Rugby Club" 
+              className="w-10 h-10 lg:w-12 lg:h-12 object-contain"
+            />
           </Link>
 
           {/* Desktop Navigation */}
@@ -92,7 +78,7 @@ const Navbar = () => {
         {/* Mobile Navigation */}
         {isOpen && (
           <div className="md:hidden bg-dark-950/98 backdrop-blur-md">
-            <div className="px-2 pt-2 pb-3 space-y-1">
+            <div className="px-4 pt-2 pb-3 space-y-1">
               {navItems.map((item) => (
                 <Link
                   key={item.name}

@@ -125,13 +125,13 @@ Los fondos recaudados se destinarán íntegramente a las organizaciones benefici
       <Hero />
       
       {/* Sección de Noticias */}
-      <section className="section-padding bg-dark-50">
+      <section className="section-padding bg-gradient-to-br from-slate-100 via-blue-50 to-slate-200">
         <div className="container-custom">
           <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-sport font-bold text-dark-950 mb-4">
-              Últimas <span className="text-gradient">Noticias</span>
+            <h2 className="text-4xl md:text-5xl font-sport font-bold text-dark-900 mb-4">
+              Últimas <span className="text-primary-600">Noticias</span>
             </h2>
-            <p className="text-lg text-dark-300 max-w-2xl mx-auto">
+            <p className="text-lg text-dark-600 max-w-2xl mx-auto">
               Mantente al día con todas las novedades del club, resultados de partidos, 
               eventos especiales y mucho más.
             </p>
@@ -149,7 +149,7 @@ Los fondos recaudados se destinarán íntegramente a las organizaciones benefici
 
           {/* Ver más noticias */}
           <div className="text-center mt-12">
-            <button className="btn-outline">
+            <button className="bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white font-bold py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
               Ver más noticias
             </button>
           </div>
