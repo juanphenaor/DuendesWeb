@@ -8,16 +8,19 @@ module.exports = {
       colors: {
         // Colores principales basados en el logo
         primary: {
-          50: '#eff6ff',
-          100: '#dbeafe',
-          200: '#bfdbfe',
-          300: '#93c5fd',
-          400: '#60a5fa',
-          500: '#3b82f6',  // Azul principal del escudo
-          600: '#1E4E9E',  // Azul duende principal
-          700: '#1d4ed8',
-          800: '#1e3a8a',
-          900: '#1e293b',
+          50: '#f0f4ff',
+          100: '#e0e7ff',
+          200: '#c7d2fe',
+          300: '#a5b4fc',
+          400: '#818cf8',
+          500: '#6366f1',
+          600: '#080a1a',  // Azul oscuro duende principal
+          700: '#0d1225',
+          800: '#1e1b4b',
+          900: '#312e81',
+        },
+        primaryCard: {
+          DEFAULT: '#181c38', // Azul para tarjetas y fondos destacados
         },
         secondary: {
           50: '#f0f9ff',

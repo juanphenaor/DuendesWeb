@@ -3,32 +3,28 @@ import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [isTop, setIsTop] = useState(true);
   const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
-      const isScrolled = window.scrollY > 50;
-      setScrolled(isScrolled);
+      setIsTop(window.scrollY === 0);
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const navItems = [
-    { name: 'Inicio', path: '/' },
     { name: 'Nosotros', path: '/nosotros' },
     { name: 'Galería', path: '/galeria' },
     { name: 'Contacto', path: '/contacto' },
-    { name: 'Inscripción', path: '/inscripcion' },
   ];
 
   const isActive = (path) => location.pathname === path;
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${
-      scrolled ? 'bg-dark-950/95 backdrop-blur-md shadow-lg' : 'bg-dark-950/80 backdrop-blur-sm'
+    <nav className={`fixed w-full z-50  ${
+      isOpen ? 'bg-[#0b0c10] shadow-lg' : (isTop ? 'bg-transparent' : 'bg-[#0b0c10]/60 shadow-lg')
     }`}>
       <div className="container-custom">
         <div className="flex items-center justify-between h-16 lg:h-20">
@@ -47,9 +43,9 @@ const Navbar = () => {
               <Link
                 key={item.name}
                 to={item.path}
-                className={`font-medium transition-colors duration-300 hover:text-secondary-500 ${
+                className={`font-medium transition-colors duration-300 hover:text-blue-400 ${
                   isActive(item.path) 
-                    ? 'text-secondary-500 border-b-2 border-secondary-500' 
+                    ? 'text-blue-400 border-b-2 border-blue-400' 
                     : 'text-white'
                 }`}
               >
@@ -62,7 +58,7 @@ const Navbar = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-white hover:text-secondary-500 transition-colors duration-300"
+              className="text-white hover:text-blue-400 transition-colors duration-300"
             >
               <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 {isOpen ? (
@@ -77,16 +73,16 @@ const Navbar = () => {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden bg-dark-950/98 backdrop-blur-md">
+          <div className="md:hidden bg-[#0b0c10]">
             <div className="px-4 pt-2 pb-3 space-y-1">
               {navItems.map((item) => (
                 <Link
                   key={item.name}
                   to={item.path}
                   onClick={() => setIsOpen(false)}
-                  className={`block px-3 py-2 text-base font-medium transition-colors duration-300 hover:text-secondary-500 ${
+                  className={`block px-3 py-2 text-base font-medium hover:text-blue-400 ${
                     isActive(item.path) 
-                      ? 'text-secondary-500 bg-primary-900/50' 
+                      ? 'text-blue-400 bg-[#0b0c10]/50' 
                       : 'text-white'
                   }`}
                 >

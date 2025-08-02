@@ -17,7 +17,7 @@ const Footer = () => {
             <Link to="/" className="inline-block mb-4 hover:opacity-80 transition-opacity duration-300">
               <div className="text-white">
                 {/* Título principal "Duendes" - estilo del escudo */}
-                <div className="font-black text-2xl lg:text-3xl tracking-wider uppercase" 
+                <div className="font-black text-2xl lg:text-3xl tracking-wider uppercase text-blue-400" 
                      style={{
                        fontFamily: 'Impact, "Arial Black", "Helvetica Condensed", sans-serif',
                        textShadow: '2px 2px 4px rgba(0,0,0,0.8)',

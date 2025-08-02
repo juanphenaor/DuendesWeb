@@ -44,7 +44,7 @@
   }
   
   .hero-gradient {
-    @apply bg-gradient-to-br from-dark-950 via-primary-900 to-dark-900;
+    @apply bg-gradient-to-br from-gray-900 via-gray-800 to-primary-600;
   }
 
   /* Animaciones personalizadas */

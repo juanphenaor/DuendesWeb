@@ -30,35 +30,49 @@ const About = () => {
       age: "6-8 años",
       description: "Iniciación lúdica al rugby con énfasis en diversión y valores básicos del deporte.",
       icon: "🏃‍♂️",
-      color: "bg-green-100 border-green-500 text-green-700"
+      color: "bg-green-50 border-green-400 text-green-800"
     },
     {
       name: "Rugby Infantil",
       age: "9-12 años",
       description: "Fundamentos técnicos y tácticos del rugby adaptados a estas edades.",
       icon: "🏈",
-      color: "bg-blue-100 border-blue-500 text-blue-700"
+      color: "bg-blue-50 border-blue-400 text-blue-800"
     },
     {
       name: "Rugby Juvenil",
       age: "13-17 años",
       description: "Desarrollo avanzado con participación en competiciones juveniles.",
       icon: "🏆",
-      color: "bg-purple-100 border-purple-500 text-purple-700"
+      color: "bg-purple-50 border-purple-400 text-purple-800"
     },
     {
-      name: "Primer Equipo",
+      name: "Equipo A",
       age: "18+ años",
-      description: "Equipo senior que compite en la Liga Regional de Rugby.",
-      icon: "⭐",
-      color: "bg-yellow-100 border-yellow-500 text-yellow-700"
+      description: "Compite en la Primera División de la Liga Antioqueña de Rugby y en el Torneo Nacional de Clubes.",
+      icon: "🅰️",
+      color: "bg-yellow-50 border-yellow-400 text-yellow-800"
     },
     {
-      name: "Veteranos",
-      age: "35+ años",
-      description: "Rugby social para jugadores con experiencia que buscan mantenerse activos.",
-      icon: "🎖️",
-      color: "bg-red-100 border-red-500 text-red-700"
+      name: "Equipo B",
+      age: "18+ años",
+      description: "Compite en la Segunda División de la Liga Antioqueña de Rugby.",
+      icon: "🅱️",
+      color: "bg-yellow-50 border-yellow-400 text-yellow-800"
+    },
+    {
+      name: "Femenino A",
+      age: "16+ años",
+      description: "Compite en la Primera Femenina de la Liga Antioqueña de Rugby.",
+      icon: "👩‍🦰",
+      color: "bg-pink-50 border-pink-400 text-pink-800"
+    },
+    {
+      name: "Femenino B",
+      age: "16+ años",
+      description: "Compite en la Segunda Femenina de la Liga Antioqueña de Rugby.",
+      icon: "👩‍🦱",
+      color: "bg-pink-50 border-pink-400 text-pink-800"
     }
   ];
 
@@ -96,15 +110,15 @@ const About = () => {
   ];
 
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="hero-gradient text-white section-padding">
+      <section className="section-padding bg-[#0b0c10]">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-6xl font-sport font-bold mb-6">
-              Conoce a los <span className="text-secondary-400">Duendes</span>
+            <h1 className="text-4xl md:text-6xl font-sport font-bold mb-6 text-blue-400">
+              Conoce a los <span className="text-white">Duendes</span>
             </h1>
-            <p className="text-xl md:text-2xl text-gray-200 leading-relaxed">
+            <p className="text-xl md:text-2xl text-gray-300 leading-relaxed">
               Más que un club de rugby, somos una familia unida por la pasión, 
               el respeto y el amor por este hermoso deporte.
             </p>
@@ -113,14 +127,14 @@ const About = () => {
       </section>
 
       {/* Historia del Club */}
-      <section className="section-padding bg-dark-50">
+      <section className="section-padding bg-gradient-to-br from-slate-100 via-blue-50 to-slate-200">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-sport font-bold text-dark-950 mb-6">
-                Nuestra <span className="text-gradient">Historia</span>
+              <h2 className="text-3xl md:text-4xl font-sport font-bold text-blue-400 mb-6">
+                Nuestra <span className="text-gray-800">Historia</span>
               </h2>
-              <div className="space-y-6 text-dark-950 leading-relaxed">
+              <div className="space-y-6 text-gray-800 leading-relaxed">
                 <p>
                   El Duendes Rugby Club nació en 2008 de la mano de un grupo de apasionados 
                   del rugby que soñaban con crear un espacio donde los valores del deporte oval 
@@ -140,11 +154,11 @@ const About = () => {
             </div>
             <div className="relative">
               <img
-                src="/api/placeholder/600/400"
-                alt="Historia del Duendes Rugby Club"
+                src="Cover.JPG"
+                alt="Historia de Duendes Rugby Club"
                 className="rounded-2xl shadow-xl"
               />
-              <div className="absolute -bottom-6 -right-6 bg-secondary-500 text-dark-900 p-6 rounded-2xl shadow-lg">
+              <div className="absolute -bottom-6 -right-6 bg-blue-400 text-white p-6 rounded-2xl shadow-lg">
                 <div className="text-3xl font-sport font-bold">15+</div>
                 <div className="text-sm font-semibold">Años de Historia</div>
               </div>
@@ -154,35 +168,30 @@ const About = () => {
       </section>
 
       {/* Categorías */}
-      <section className="section-padding bg-dark-50">
+      <section className="section-padding bg-gradient-to-br from-slate-100 via-blue-50 to-slate-200">
         <div className="container-custom">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-sport font-bold text-dark-950 mb-4">
-              Nuestras <span className="text-gradient">Categorías</span>
+            <h2 className="text-3xl md:text-4xl font-sport font-bold text-blue-400 mb-4">
+              Nuestras <span className="text-gray-800">Categorías</span>
             </h2>
-            <p className="text-lg text-dark-300 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-800 max-w-2xl mx-auto">
               Ofrecemos rugby para todas las edades y niveles, desde la iniciación 
               hasta la competición de alto nivel.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="flex flex-wrap justify-center">
             {categories.map((category, index) => (
-              <div key={index} className={`card p-6 border-l-4 ${category.color}`}>
-                <div className="flex items-start space-x-4">
-                  <div className="text-3xl">{category.icon}</div>
-                  <div className="flex-1">
-                    <h3 className="font-sport font-semibold text-xl text-dark-900 mb-2">
-                      {category.name}
-                    </h3>
-                    <div className="text-sm font-semibold text-gray-600 mb-3">
-                      {category.age}
-                    </div>
-                    <p className="text-gray-700 text-sm leading-relaxed">
-                      {category.description}
-                    </p>
-                  </div>
+              <div key={index} className="card p-4 bg-primaryCard text-white border border-blue-400 hover:shadow-xl transition-all duration-300 flex flex-col items-center justify-center h-[170px] w-[190px] m-2">
+                <h3 className="font-sport font-semibold text-lg text-blue-400 mb-1 text-center">
+                  {category.name}
+                </h3>
+                <div className="text-xs font-semibold text-gray-300 mb-1 text-center">
+                  {category.age}
                 </div>
+                <p className="text-xs text-white leading-snug text-center">
+                  {category.description}
+                </p>
               </div>
             ))}
           </div>
@@ -190,25 +199,25 @@ const About = () => {
       </section>
 
       {/* Valores */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-gradient-to-br from-slate-100 via-blue-50 to-slate-200">
         <div className="container-custom">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-sport font-bold text-dark-900 mb-4">
-              Nuestros <span className="text-gradient">Valores</span>
+            <h2 className="text-3xl md:text-4xl font-sport font-bold text-blue-400 mb-4">
+              Nuestros <span className="text-gray-800">Valores</span>
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-800 max-w-2xl mx-auto">
               Los principios que nos guían dentro y fuera del campo de juego.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {values.map((value, index) => (
-              <div key={index} className="card p-6 text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+              <div key={index} className="card p-6 bg-primaryCard text-white border border-blue-400 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 text-center">
                 <div className="text-4xl mb-4">{value.icon}</div>
-                <h3 className="font-sport font-bold text-xl text-dark-900 mb-3">
+                <h3 className="font-sport font-bold text-xl text-blue-400 mb-3">
                   {value.title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-white leading-relaxed">
                   {value.description}
                 </p>
               </div>
@@ -218,11 +227,11 @@ const About = () => {
       </section>
 
       {/* Logros */}
-      <section className="section-padding bg-dark-900 text-white">
+      <section className="section-padding bg-[#0b0c10]">
         <div className="container-custom">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-sport font-bold mb-4">
-              Nuestros <span className="text-secondary-400">Logros</span>
+            <h2 className="text-3xl md:text-4xl font-sport font-bold mb-4 text-blue-400">
+              Nuestros <span className="text-white">Logros</span>
             </h2>
             <p className="text-lg text-gray-300 max-w-2xl mx-auto">
               Hitos importantes que marcan nuestro crecimiento y evolución como club.
@@ -231,7 +240,7 @@ const About = () => {
 
           <div className="relative">
             {/* Línea temporal */}
-            <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-secondary-500 transform md:-translate-x-1/2" />
+            <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-blue-400 transform md:-translate-x-1/2" />
             
             <div className="space-y-8">
               {achievements.map((achievement, index) => (
@@ -239,15 +248,15 @@ const About = () => {
                   index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
                 }`}>
                   {/* Punto en la línea temporal */}
-                  <div className="absolute left-4 md:left-1/2 w-4 h-4 bg-secondary-500 rounded-full transform md:-translate-x-1/2 z-10" />
+                  <div className="absolute left-4 md:left-1/2 w-4 h-4 bg-blue-400 rounded-full transform md:-translate-x-1/2 z-10" />
                   
                   {/* Contenido */}
                   <div className={`flex-1 ${index % 2 === 0 ? 'md:pr-8' : 'md:pl-8'} pl-12 md:pl-0`}>
-                    <div className={`card bg-dark-800 border border-gray-700 p-6 ${
+                    <div className={`card bg-primaryCard border border-blue-400 text-white p-6 ${
                       index % 2 === 0 ? 'md:mr-8' : 'md:ml-8'
                     }`}>
                       <div className="flex items-center space-x-4 mb-3">
-                        <span className="text-2xl font-sport font-bold text-secondary-400">
+                        <span className="text-2xl font-sport font-bold text-blue-400">
                           {achievement.year}
                         </span>
                         <h3 className="font-sport font-semibold text-xl">
@@ -267,21 +276,18 @@ const About = () => {
       </section>
 
       {/* Call to Action */}
-      <section className="section-padding bg-primary-600 text-white">
+      <section className="section-padding bg-gradient-to-br from-slate-100 via-blue-50 to-slate-200">
         <div className="container-custom text-center">
-          <h2 className="text-3xl md:text-4xl font-sport font-bold mb-6">
-            ¿Listo para unirte a los Duendes?
+          <h2 className="text-3xl md:text-4xl font-sport font-bold mb-6 text-blue-400">
+            ¿Listo para unirte a los <span className="text-gray-800">Duendes</span>?
           </h2>
-          <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-800 mb-8 max-w-2xl mx-auto">
             Forma parte de nuestra familia rugbier. No importa tu edad o experiencia, 
             tenemos un lugar para ti.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/inscripcion" className="btn-secondary">
-              Inscríbete Ahora
-            </a>
-            <a href="/contacto" className="btn-outline border-white text-white hover:bg-white hover:text-primary-600">
-              Más Información
+          <div className="flex justify-center">
+            <a href="/contacto" className="btn-primary bg-primaryCard text-white border border-blue-400 hover:bg-blue-500 font-bold">
+              Contáctanos
             </a>
           </div>
         </div>

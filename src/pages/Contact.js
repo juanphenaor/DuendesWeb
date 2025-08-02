@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import emailjs from '@emailjs/browser';
+import { emailConfig } from '../config/emailConfig';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -52,6 +54,19 @@ const Contact = () => {
       newErrors.telefono = 'El teléfono no es válido';
     }
 
+    // Validar asunto seleccionado
+    const asuntoOptions = {
+      'informacion-general': 'Información general',
+      'inscripcion': 'Inscripción',
+      'entrenamientos': 'Entrenamientos',
+      'eventos': 'Eventos',
+      'patrocinio': 'Patrocinio',
+      'otro': 'Otro'
+    };
+    if (!formData.asunto || !asuntoOptions[formData.asunto]) {
+      newErrors.asunto = 'Debes seleccionar un asunto válido';
+    }
+
     return newErrors;
   };
 
@@ -64,12 +79,48 @@ const Contact = () => {
       return;
     }
 
+    // Obtener el título del asunto seleccionado
+    const asuntoOptions = {
+      'informacion-general': 'Información general',
+      'inscripcion': 'Inscripción',
+      'entrenamientos': 'Entrenamientos',
+      'eventos': 'Eventos',
+      'patrocinio': 'Patrocinio',
+      'otro': 'Otro'
+    };
+    const asuntoTitle = asuntoOptions[formData.asunto];
+
     setIsSubmitting(true);
     setErrors({});
 
     try {
-      // Simular envío del formulario
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      // Preparar los datos para el template formal de EmailJS
+      const templateParams = {
+        // Variables principales del template
+        title: 'Nuevo mensaje de contacto',
+        contact_name: formData.nombre,
+        contact_email: formData.email,
+        contact_phone: formData.telefono || 'No proporcionado',
+        contact_date: new Date().toLocaleString('es-ES', {
+          weekday: 'long',
+          year: 'numeric',
+          month: 'long', 
+          day: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit',
+          timeZone: 'America/Bogota'
+        }),
+        inquiry_subject: asuntoTitle,
+        inquiry_message: formData.mensaje
+      };
+
+      // Enviar el email usando EmailJS
+      await emailjs.send(
+        emailConfig.serviceID, 
+        emailConfig.templateID, 
+        templateParams, 
+        emailConfig.publicKey
+      );
       
       setSubmitStatus('success');
       setFormData({
@@ -80,117 +131,90 @@ const Contact = () => {
         mensaje: ''
       });
     } catch (error) {
+      console.error('Error al enviar el email:', error);
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
     }
-  };
+  }
 
   const contactInfo = [
     {
       icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
         </svg>
       ),
       title: 'Ubicación',
       details: [
-        'Estadio Municipal de Rugby',
-        'Calle Principal 123',
-        'Ciudad, Provincia, CP 12345'
+        'Cancha La López',
+        'Manrique, Medellín',
+        'Colombia'
       ]
     },
     {
       icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
         </svg>
       ),
       title: 'Teléfono',
       details: [
-        '+34 123 456 789',
-        '+34 987 654 321 (Emergencias)'
+        '312 7885615'
       ]
     },
     {
       icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
         </svg>
       ),
       title: 'Email',
       details: [
-        'info@duendesrugby.com',
-        'entrenador@duendesrugby.com',
-        'cantera@duendesrugby.com'
+        'corporacionduendesrc@gmail.com'
       ]
     },
     {
       icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
       ),
       title: 'Horarios',
       details: [
-        'Entrenamientos:',
-        'Lun, Mié, Vie: 18:00 - 20:00',
-        'Sáb: 10:00 - 12:00 (Partidos)',
-        'Dom: 10:00 - 12:00 (Cantera)'
+        'Juveniles y Femeninos:',
+        'Martes y Jueves 5:00 pm',
+        'Masculino Adultos:',
+        'Martes y Jueves 6:30 pm'
       ]
     }
   ];
 
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="hero-gradient text-white section-padding">
+      <section className="section-padding bg-[#0b0c10]">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-6xl font-sport font-bold mb-6">
-              Contacta con <span className="text-secondary-400">Nosotros</span>
+            <h1 className="text-4xl md:text-6xl font-sport font-bold mb-6 text-blue-400">
+              Contacta con <span className="text-white">Nosotros</span>
             </h1>
-            <p className="text-xl md:text-2xl text-gray-200 leading-relaxed">
+            <p className="text-xl md:text-2xl text-gray-300 leading-relaxed">
               ¿Tienes preguntas? ¿Quieres más información? ¡Estamos aquí para ayudarte!
             </p>
           </div>
         </div>
       </section>
 
-      {/* Información de contacto */}
-      <section className="section-padding bg-white">
-        <div className="container-custom">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-            {contactInfo.map((info, index) => (
-              <div key={index} className="card p-6 text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                <div className="text-primary-600 mb-4 flex justify-center">
-                  {info.icon}
-                </div>
-                <h3 className="font-sport font-semibold text-xl text-dark-900 mb-3">
-                  {info.title}
-                </h3>
-                <div className="space-y-1">
-                  {info.details.map((detail, detailIndex) => (
-                    <p key={detailIndex} className="text-gray-600 text-sm">
-                      {detail}
-                    </p>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Formulario de contacto y mapa */}
-      <section className="section-padding bg-gray-50">
+      {/* Formulario de contacto y información */}
+      <section className="section-padding bg-gradient-to-br from-slate-100 via-blue-50 to-slate-200">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Formulario */}
-            <div className="card p-8">
-              <h2 className="text-3xl font-sport font-bold text-dark-900 mb-6">
-                Envíanos un <span className="text-gradient">Mensaje</span>
+            <div className="card p-8 bg-primaryCard text-white border border-blue-400 shadow-lg">
+              <h2 className="text-3xl font-sport font-bold text-blue-400 mb-6">
+                Envíanos un <span className="text-white">Mensaje</span>
               </h2>
 
               {submitStatus === 'success' && (
@@ -218,7 +242,7 @@ const Contact = () => {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="nombre" className="block text-sm font-semibold text-gray-700 mb-2">
+                    <label htmlFor="nombre" className="block text-sm font-semibold text-blue-400 mb-2">
                       Nombre completo *
                     </label>
                     <input
@@ -227,16 +251,14 @@ const Contact = () => {
                       name="nombre"
                       value={formData.nombre}
                       onChange={handleInputChange}
-                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors ${
-                        errors.nombre ? 'border-red-500' : 'border-gray-300'
-                      }`}
+                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-colors bg-primaryCard text-white border-blue-400 placeholder-blue-300 ${errors.nombre ? 'border-red-500' : 'border-blue-400'}`}
                       placeholder="Tu nombre completo"
                     />
                     {errors.nombre && <p className="text-red-500 text-sm mt-1">{errors.nombre}</p>}
                   </div>
 
                   <div>
-                    <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
+                    <label htmlFor="email" className="block text-sm font-semibold text-blue-400 mb-2">
                       Email *
                     </label>
                     <input
@@ -245,9 +267,7 @@ const Contact = () => {
                       name="email"
                       value={formData.email}
                       onChange={handleInputChange}
-                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors ${
-                        errors.email ? 'border-red-500' : 'border-gray-300'
-                      }`}
+                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-colors bg-primaryCard text-white border-blue-400 placeholder-blue-300 ${errors.email ? 'border-red-500' : 'border-blue-400'}`}
                       placeholder="tu@email.com"
                     />
                     {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
@@ -256,7 +276,7 @@ const Contact = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="telefono" className="block text-sm font-semibold text-gray-700 mb-2">
+                    <label htmlFor="telefono" className="block text-sm font-semibold text-blue-400 mb-2">
                       Teléfono
                     </label>
                     <input
@@ -265,16 +285,14 @@ const Contact = () => {
                       name="telefono"
                       value={formData.telefono}
                       onChange={handleInputChange}
-                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors ${
-                        errors.telefono ? 'border-red-500' : 'border-gray-300'
-                      }`}
+                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-colors bg-primaryCard text-white border-blue-400 placeholder-blue-300 ${errors.telefono ? 'border-red-500' : 'border-blue-400'}`}
                       placeholder="+34 123 456 789"
                     />
                     {errors.telefono && <p className="text-red-500 text-sm mt-1">{errors.telefono}</p>}
                   </div>
 
                   <div>
-                    <label htmlFor="asunto" className="block text-sm font-semibold text-gray-700 mb-2">
+                    <label htmlFor="asunto" className="block text-sm font-semibold text-blue-400 mb-2">
                       Asunto
                     </label>
                     <select
@@ -282,7 +300,7 @@ const Contact = () => {
                       name="asunto"
                       value={formData.asunto}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors"
+                      className="w-full px-4 py-3 border border-blue-400 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-colors bg-primaryCard text-white placeholder-blue-300"
                     >
                       <option value="">Selecciona un asunto</option>
                       <option value="informacion-general">Información general</option>
@@ -292,11 +310,12 @@ const Contact = () => {
                       <option value="patrocinio">Patrocinio</option>
                       <option value="otro">Otro</option>
                     </select>
+                    {errors.asunto && <p className="text-red-500 text-sm mt-1">{errors.asunto}</p>}
                   </div>
                 </div>
 
                 <div>
-                  <label htmlFor="mensaje" className="block text-sm font-semibold text-gray-700 mb-2">
+                  <label htmlFor="mensaje" className="block text-sm font-semibold text-blue-400 mb-2">
                     Mensaje *
                   </label>
                   <textarea
@@ -305,13 +324,11 @@ const Contact = () => {
                     rows={6}
                     value={formData.mensaje}
                     onChange={handleInputChange}
-                    className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors resize-none ${
-                      errors.mensaje ? 'border-red-500' : 'border-gray-300'
-                    }`}
+                    className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-colors resize-none bg-primaryCard text-white placeholder-blue-300 ${errors.mensaje ? 'border-red-500' : 'border-blue-400'}`}
                     placeholder="Escribe tu mensaje aquí..."
                   />
                   {errors.mensaje && <p className="text-red-500 text-sm mt-1">{errors.mensaje}</p>}
-                  <p className="text-gray-500 text-sm mt-1">
+                  <p className="text-blue-300 text-sm mt-1">
                     Mínimo 10 caracteres. {formData.mensaje.length}/500
                   </p>
                 </div>
@@ -319,7 +336,7 @@ const Contact = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className={`w-full btn-primary ${
+                  className={`w-full btn-primary bg-blue-400 text-white font-bold hover:bg-blue-500 ${
                     isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
                   }`}
                 >
@@ -338,56 +355,77 @@ const Contact = () => {
               </form>
             </div>
 
-            {/* Mapa y información adicional */}
-            <div className="space-y-8">
-              {/* Mapa placeholder */}
-              <div className="card overflow-hidden">
-                <div className="bg-gray-200 h-64 flex items-center justify-center">
-                  <div className="text-center text-gray-500">
-                    <svg className="w-16 h-16 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                    <p className="font-semibold">Mapa Interactivo</p>
-                    <p className="text-sm">Estadio Municipal de Rugby</p>
-                  </div>
-                </div>
-                <div className="p-4">
-                  <button className="btn-outline w-full">
-                    Ver en Google Maps
-                  </button>
-                </div>
-              </div>
-
-              {/* Información adicional */}
-              <div className="card p-6">
-                <h3 className="font-sport font-bold text-xl text-dark-900 mb-4">
-                  ¿Cómo llegar?
-                </h3>
-                <div className="space-y-4 text-gray-700">
-                  <div>
-                    <h4 className="font-semibold text-gray-900 mb-2">🚗 En coche</h4>
-                    <p className="text-sm">
-                      Salida 15 de la autopista A-4. Seguir indicaciones hacia el centro deportivo.
-                      Aparcamiento gratuito disponible.
-                    </p>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900 mb-2">🚌 Transporte público</h4>
-                    <p className="text-sm">
-                      Líneas de autobús 25, 47 y 68. Parada "Estadio Municipal" 
-                      (a 2 minutos a pie de nuestras instalaciones).
-                    </p>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900 mb-2">🚲 En bicicleta</h4>
-                    <p className="text-sm">
-                      Carril bici que conecta con el centro de la ciudad. 
-                      Aparcabicis seguros disponibles.
-                    </p>
-                  </div>
-                </div>
-              </div>
+            {/* Información de contacto */}
+            <div className="space-y-6">
+              {contactInfo.map((info, index) => {
+                let link = null;
+                let ariaLabel = '';
+                if (info.title === 'Ubicación') {
+                  link = 'https://www.google.com/maps/place/Cancha+La+L%C3%B3pez/@6.2617875,-75.5550768,19z/data=!4m6!3m5!1s0x8e4428ecf530838b:0x30da1f416b12f693!8m2!3d6.2616683!4d-75.5544985!16s%2Fg%2F1ptywfcqm?entry=ttu&g_ep=EgoyMDI1MDcyOS4wIKXMDSoASAFQAw%3D%3D';
+                  ariaLabel = 'Abrir ubicación en Google Maps';
+                } else if (info.title === 'Teléfono') {
+                  link = 'https://wa.me/573127885615';
+                  ariaLabel = 'Contactar por WhatsApp';
+                } else if (info.title === 'Email') {
+                  link = 'mailto:corporacionduendesrc@gmail.com';
+                  ariaLabel = 'Enviar correo a corporacionduendesrc@gmail.com';
+                }
+                if (link) {
+                  return (
+                    <a
+                      key={index}
+                      href={link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={ariaLabel}
+                      className="block"
+                      style={{ textDecoration: 'none' }}
+                    >
+                      <div className="card p-6 bg-primaryCard text-white border border-blue-400 hover:shadow-xl transition-all duration-300">
+                        <div className="flex items-start space-x-4">
+                          <div className="mt-1">
+                            {info.icon}
+                          </div>
+                          <div className="flex-1">
+                            <h3 className="font-sport font-semibold text-xl text-blue-400 mb-3">
+                              {info.title}
+                            </h3>
+                            <div className="space-y-1">
+                              {info.details.map((detail, detailIndex) => (
+                                <p key={detailIndex} className="text-white text-sm">
+                                  {detail}
+                                </p>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+                  );
+                } else {
+                  return (
+                    <div key={index} className="card p-6 bg-primaryCard text-white border border-blue-400 hover:shadow-xl transition-all duration-300">
+                      <div className="flex items-start space-x-4">
+                        <div className="mt-1">
+                          {info.icon}
+                        </div>
+                        <div className="flex-1">
+                          <h3 className="font-sport font-semibold text-xl text-blue-400 mb-3">
+                            {info.title}
+                          </h3>
+                          <div className="space-y-1">
+                            {info.details.map((detail, detailIndex) => (
+                              <p key={detailIndex} className="text-white text-sm">
+                                {detail}
+                              </p>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                }
+              })}
             </div>
           </div>
         </div>

@@ -110,15 +110,15 @@ const Gallery = () => {
   };
 
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="hero-gradient text-white section-padding">
+      <section className="section-padding bg-[#0b0c10]">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-6xl font-sport font-bold mb-6">
-              Galería <span className="text-secondary-400">Duendes</span>
+            <h1 className="text-4xl md:text-6xl font-sport font-bold mb-6 text-blue-400">
+              Galería <span className="text-white">Duendes</span>
             </h1>
-            <p className="text-xl md:text-2xl text-gray-200 leading-relaxed">
+            <p className="text-xl md:text-2xl text-gray-300 leading-relaxed">
               Revive los mejores momentos, partidos épicos y celebraciones 
               que hacen único a nuestro club.
             </p>
@@ -127,7 +127,7 @@ const Gallery = () => {
       </section>
 
       {/* Filtros */}
-      <section className="bg-white py-8 sticky top-20 z-30 border-b border-gray-200">
+      <section className="section-padding bg-gradient-to-br from-slate-100 via-blue-50 to-slate-200">
         <div className="container-custom">
           <div className="flex flex-wrap justify-center gap-4">
             {filters.map((filter) => (
@@ -136,8 +136,8 @@ const Gallery = () => {
                 onClick={() => setActiveFilter(filter.id)}
                 className={`flex items-center space-x-2 px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
                   activeFilter === filter.id
-                    ? 'bg-primary-600 text-white shadow-lg'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    ? 'bg-blue-400 text-white shadow-lg'
+                    : 'bg-primaryCard text-white border border-blue-400 hover:bg-blue-500'
                 }`}
               >
                 <span className="text-lg">{filter.icon}</span>
@@ -152,7 +152,7 @@ const Gallery = () => {
       </section>
 
       {/* Galería */}
-      <section className="section-padding bg-gray-50">
+      <section className="section-padding bg-gradient-to-br from-slate-100 via-blue-50 to-slate-200">
         <div className="container-custom">
           {filteredMedia.length === 0 ? (
             <div className="text-center py-16">
@@ -168,23 +168,23 @@ const Gallery = () => {
             <>
               {/* Estadísticas */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-                <div className="card p-6 text-center">
-                  <div className="text-3xl font-sport font-bold text-primary-600 mb-2">
+                <div className="card p-6 bg-primaryCard text-white border border-blue-400 shadow-lg text-center">
+                  <div className="text-3xl font-sport font-bold text-blue-400 mb-2">
                     {mediaData.filter(item => item.type === 'image').length}
                   </div>
-                  <div className="text-gray-600 font-semibold">Fotografías</div>
+                  <div className="text-white font-semibold">Fotografías</div>
                 </div>
-                <div className="card p-6 text-center">
-                  <div className="text-3xl font-sport font-bold text-secondary-500 mb-2">
+                <div className="card p-6 bg-primaryCard text-white border border-blue-400 shadow-lg text-center">
+                  <div className="text-3xl font-sport font-bold text-blue-400 mb-2">
                     {mediaData.filter(item => item.type === 'video').length}
                   </div>
-                  <div className="text-gray-600 font-semibold">Videos</div>
+                  <div className="text-white font-semibold">Videos</div>
                 </div>
-                <div className="card p-6 text-center">
-                  <div className="text-3xl font-sport font-bold text-green-600 mb-2">
+                <div className="card p-6 bg-primaryCard text-white border border-blue-400 shadow-lg text-center">
+                  <div className="text-3xl font-sport font-bold text-blue-400 mb-2">
                     {mediaData.length}
                   </div>
-                  <div className="text-gray-600 font-semibold">Total</div>
+                  <div className="text-white font-semibold">Total</div>
                 </div>
               </div>
 
@@ -193,7 +193,7 @@ const Gallery = () => {
                 {filteredMedia.map((media) => (
                   <div
                     key={media.id}
-                    className="card cursor-pointer transform hover:scale-105 transition-all duration-300 group overflow-hidden"
+                    className="card bg-primaryCard text-white border border-blue-400 hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:scale-105 group overflow-hidden"
                     onClick={() => openLightbox(media)}
                   >
                     <div className="relative">
@@ -204,7 +204,7 @@ const Gallery = () => {
                       />
                       
                       {/* Overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-dark-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                       
                       {/* Tipo de medio */}
                       <div className="absolute top-3 right-3">
@@ -236,7 +236,7 @@ const Gallery = () => {
 
                       {/* Información */}
                       <div className="absolute bottom-0 left-0 right-0 p-4 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                        <h3 className="font-semibold text-sm mb-1 line-clamp-2">
+                        <h3 className="font-semibold text-sm mb-1 line-clamp-2 text-blue-400">
                           {media.title}
                         </h3>
                         <p className="text-xs text-gray-200">
@@ -254,7 +254,7 @@ const Gallery = () => {
 
               {/* Botón cargar más */}
               <div className="text-center mt-12">
-                <button className="btn-outline">
+                <button className="btn-primary bg-blue-400 text-white font-bold hover:bg-blue-500">
                   Cargar más contenido
                 </button>
               </div>
