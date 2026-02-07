@@ -18,6 +18,7 @@ const Navbar = () => {
     { name: 'Nosotros', path: '/nosotros' },
     { name: 'Galería', path: '/galeria' },
     { name: 'Contacto', path: '/contacto' },
+    { name: 'Ya soy un duende', path: '/login' },
   ];
 
   const isActive = (path) => location.pathname === path;

@@ -8,6 +8,7 @@ import Contact from './pages/Contact';
 import Registration from './pages/Registration';
 import Footer from './components/Footer/Footer';
 import SocialMediaFloat from './components/SocialMediaFloat/SocialMediaFloat';
+import Login from './pages/Login';
 import './index.css';
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
             <Route path="/galeria" element={<Gallery />} />
             <Route path="/contacto" element={<Contact />} />
             <Route path="/inscripcion" element={<Registration />} />
+            <Route path="/login" element={<Login />} />
           </Routes>
         </main>
         <Footer />

@@ -33,3 +33,6 @@ yarn-error.log*
 
 # GitHub Pages deployment
 gh-pages
+
+# Copilot instructions (no subir)
+copilot-instructions.md
