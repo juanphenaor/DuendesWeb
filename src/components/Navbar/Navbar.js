@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../auth/AuthProvider';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,12 +15,17 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
   const navItems = [
     { name: 'Nosotros', path: '/nosotros' },
     { name: 'Galería', path: '/galeria' },
     { name: 'Contacto', path: '/contacto' },
-    { name: 'Ya soy un duende', path: '/login' },
   ];
+  const handleLogout = () => {
+    logout();
+    navigate('/');
+  };
 
   const isActive = (path) => location.pathname === path;
 
@@ -53,6 +59,23 @@ const Navbar = () => {
                 {item.name}
               </Link>
             ))}
+            {!user ? (
+              <Link
+                to="/login"
+                className={`font-medium transition-colors duration-300 hover:text-blue-400 ${
+                  isActive('/login') ? 'text-blue-400 border-b-2 border-blue-400' : 'text-white'
+                }`}
+              >
+                Ya soy un duende
+              </Link>
+            ) : (
+              <button
+                onClick={handleLogout}
+                className="font-medium text-red-600 border-b-2 border-transparent hover:border-red-600 transition-colors duration-300 ml-4"
+              >
+                Cerrar sesión
+              </button>
+            )}
           </div>
 
           {/* Mobile menu button */}
@@ -90,6 +113,24 @@ const Navbar = () => {
                   {item.name}
                 </Link>
               ))}
+              {!user ? (
+                <Link
+                  to="/login"
+                  onClick={() => setIsOpen(false)}
+                  className={`block px-3 py-2 text-base font-medium hover:text-blue-400 ${
+                    isActive('/login') ? 'text-blue-400 bg-[#0b0c10]/50' : 'text-white'
+                  }`}
+                >
+                  Ya soy un duende
+                </Link>
+              ) : (
+                <button
+                  onClick={() => { setIsOpen(false); handleLogout(); }}
+                  className="block w-full text-left px-3 py-2 text-base font-medium text-red-600 border-b-2 border-transparent hover:border-red-600"
+                >
+                  Cerrar sesión
+                </button>
+              )}
             </div>
           </div>
         )}

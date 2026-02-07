@@ -4,6 +4,9 @@ import Navbar from './components/Navbar/Navbar';
 import Home from './pages/Home';
 import About from './pages/About';
 import Gallery from './pages/Gallery';
+import Users from './pages/Users';
+import { AuthProvider } from './auth/AuthProvider';
+import PrivateRoute from './auth/PrivateRoute';
 import Contact from './pages/Contact';
 import Registration from './pages/Registration';
 import Footer from './components/Footer/Footer';
@@ -16,23 +19,30 @@ function App() {
   const basename = process.env.NODE_ENV === 'production' ? '/DuendesWeb' : '/';
   
   return (
-    <Router basename={basename}>
-      <div className="App min-h-screen bg-gray-50">
-        <Navbar />
-        <main>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/nosotros" element={<About />} />
-            <Route path="/galeria" element={<Gallery />} />
-            <Route path="/contacto" element={<Contact />} />
-            <Route path="/inscripcion" element={<Registration />} />
-            <Route path="/login" element={<Login />} />
-          </Routes>
-        </main>
-        <Footer />
-        <SocialMediaFloat />
-      </div>
-    </Router>
+    <AuthProvider>
+      <Router basename={basename}>
+        <div className="App min-h-screen bg-gray-50">
+          <Navbar />
+          <main>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/nosotros" element={<About />} />
+              <Route path="/galeria" element={<Gallery />} />
+              <Route path="/contacto" element={<Contact />} />
+              <Route path="/inscripcion" element={<Registration />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/usuarios" element={
+                <PrivateRoute>
+                  <Users />
+                </PrivateRoute>
+              } />
+            </Routes>
+          </main>
+          <Footer />
+          <SocialMediaFloat />
+        </div>
+      </Router>
+    </AuthProvider>
   );
 }
 
