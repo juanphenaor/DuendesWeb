@@ -84,7 +84,7 @@ function InsuranceModal({ open, onClose, onSuccess, initialData }) {
   if (!open) return null;
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-blue-950/70 backdrop-blur-sm">
-      <div className="bg-blue-900 rounded-xl shadow-lg p-8 w-full max-w-md relative">
+      <div className="bg-slate-900 rounded-xl shadow-lg p-8 w-full max-w-md relative">
         <button
           className="absolute top-3 right-3 text-blue-200 hover:text-blue-400 text-2xl font-bold"
           onClick={onClose}
@@ -107,7 +107,7 @@ function InsuranceModal({ open, onClose, onSuccess, initialData }) {
               name="name"
               value={form.name}
               onChange={handleChange}
-              className={`w-full rounded px-3 py-2 bg-blue-800 text-blue-100 border ${errors.name ? "border-red-400" : "border-blue-700"}`}
+              className={`w-full rounded px-3 py-2 bg-blue-900 text-blue-100 border ${errors.name ? "border-red-400" : "border-blue-700"}`}
               disabled={loading}
               required
             />
@@ -120,7 +120,7 @@ function InsuranceModal({ open, onClose, onSuccess, initialData }) {
               name="number"
               value={form.number}
               onChange={handleChange}
-              className={`w-full rounded px-3 py-2 bg-blue-800 text-blue-100 border ${errors.number ? "border-red-400" : "border-blue-700"}`}
+              className={`w-full rounded px-3 py-2 bg-blue-900 text-blue-100 border ${errors.number ? "border-red-400" : "border-blue-700"}`}
               disabled={loading}
               required
             />
@@ -133,7 +133,7 @@ function InsuranceModal({ open, onClose, onSuccess, initialData }) {
               name="contactPhone"
               value={form.contactPhone}
               onChange={handleChange}
-              className={`w-full rounded px-3 py-2 bg-blue-800 text-blue-100 border ${errors.contactPhone ? "border-red-400" : "border-blue-700"}`}
+              className={`w-full rounded px-3 py-2 bg-blue-900 text-blue-100 border ${errors.contactPhone ? "border-red-400" : "border-blue-700"}`}
               disabled={loading}
               required
             />
@@ -146,7 +146,7 @@ function InsuranceModal({ open, onClose, onSuccess, initialData }) {
               name="coverageAmount"
               value={form.coverageAmount}
               onChange={handleChange}
-              className={`w-full rounded px-3 py-2 bg-blue-800 text-blue-100 border ${errors.coverageAmount ? "border-red-400" : "border-blue-700"}`}
+              className={`w-full rounded px-3 py-2 bg-blue-900 text-blue-100 border ${errors.coverageAmount ? "border-red-400" : "border-blue-700"}`}
               disabled={loading}
               required
               min={0}
@@ -160,7 +160,7 @@ function InsuranceModal({ open, onClose, onSuccess, initialData }) {
               name="expirationDate"
               value={form.expirationDate}
               onChange={handleChange}
-              className={`w-full rounded px-3 py-2 bg-blue-800 text-blue-100 border ${errors.expirationDate ? "border-red-400" : "border-blue-700"}`}
+              className={`w-full rounded px-3 py-2 bg-blue-900 text-blue-100 border ${errors.expirationDate ? "border-red-400" : "border-blue-700"} date-white-icon`}
               disabled={loading}
               required
             />

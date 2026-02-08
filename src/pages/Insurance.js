@@ -84,12 +84,12 @@ function Insurance() {
         onSuccess={() => fetchSeguros({ filter, sortBy, page })}
         initialData={modalOpen && typeof modalOpen === 'object' ? modalOpen : null}
       />
-      <div className="container-custom w-full max-w-4xl bg-[#0b0c10]/80 backdrop-blur-md rounded-xl p-8 shadow-lg">
+      <div className="container-custom w-full max-w-4xl bg-[#0b0c10]/40 backdrop-blur-sm rounded-xl p-8 shadow-lg">
         <h1 className="text-3xl font-bold text-blue-200 mb-6 text-center">Seguros</h1>
         <div className="mb-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <input
             type="text"
-            className="w-full sm:w-72 px-4 py-2 border border-blue-900 bg-blue-900/30 text-blue-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 placeholder:text-blue-300"
+            className="w-full sm:w-72 px-4 py-2 border border-blue-900 bg-blue-900/80 text-blue-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 placeholder:text-blue-300"
             placeholder="Buscar por nombre, número..."
             value={filter}
             onChange={handleFilterChange}
@@ -108,7 +108,7 @@ function Insurance() {
               <span className="text-blue-200 text-lg font-semibold">Buscando...</span>
             </div>
           )}
-          <table className="min-w-full bg-blue-950 text-blue-100">
+          <table className="min-w-full bg-slate-950 text-blue-100">
             <thead>
               <tr>
                 <th className="px-4 py-3 text-left font-semibold tracking-wider">Nombre</th>
@@ -128,7 +128,7 @@ function Insurance() {
                 seguros.map((seguro, idx) => (
                   <tr
                     key={seguro.id}
-                    className={`!text-white transition-colors ${idx % 2 === 0 ? 'bg-blue-900' : 'bg-blue-950'} hover:bg-blue-800`}
+                    className={`!text-white transition-colors ${idx % 2 === 0 ? 'bg-slate-900' : 'bg-blue-950'} hover:bg-blue-900`}
                   >
                     <td className="px-4 py-4 whitespace-nowrap">{seguro.name}</td>
                     <td className="px-4 py-4 whitespace-nowrap">{seguro.number}</td>

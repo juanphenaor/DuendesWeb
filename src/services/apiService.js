@@ -1,5 +1,13 @@
 // Servicio centralizado para consumo de API REST y manejo de tokens
-const API_BASE_URL = "https://duendesrcapi-b5agddevhkcrgfa3.canadacentral-01.azurewebsites.net/api";
+
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
+function joinUrl(base, endpoint) {
+  if (!base) return endpoint;
+  if (!endpoint) return base;
+  // Elimina slash final de base y slash inicial de endpoint
+  return base.replace(/\/+$/, '') + '/' + endpoint.replace(/^\/+/, '');
+}
 
 function getToken() {
   return localStorage.getItem("token");
@@ -26,7 +34,8 @@ async function request(endpoint, options = {}) {
     ...(token ? { Authorization: `Bearer ${token}` } : {}),
     ...options.headers,
   };
-  const response = await fetch(`${API_BASE_URL}${endpoint}`, {
+  const url = joinUrl(API_BASE_URL, endpoint);
+  const response = await fetch(url, {
     ...options,
     headers,
   });
