@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
 import Home from './pages/Home';
 import About from './pages/About';
@@ -7,6 +7,7 @@ import Gallery from './pages/Gallery';
 import Users from './pages/Users';
 import { AuthProvider } from './auth/AuthProvider';
 import PrivateRoute from './auth/PrivateRoute';
+import Insurance from './pages/Insurance';
 import Contact from './pages/Contact';
 import Registration from './pages/Registration';
 import Footer from './components/Footer/Footer';
@@ -36,6 +37,12 @@ function App() {
                   <Users />
                 </PrivateRoute>
               } />
+              <Route path="/seguros" element={
+                <PrivateRoute>
+                  <Insurance />
+                </PrivateRoute>
+              } />
+              <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </main>
           <Footer />

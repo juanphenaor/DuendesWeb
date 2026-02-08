@@ -22,6 +22,9 @@ const Navbar = () => {
     { name: 'Galería', path: '/galeria' },
     { name: 'Contacto', path: '/contacto' },
   ];
+  const privateNavItems = [
+    { name: 'Seguros', path: '/seguros' },
+  ];
   const handleLogout = () => {
     logout();
     navigate('/');
@@ -47,6 +50,19 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
+              <Link
+                key={item.name}
+                to={item.path}
+                className={`font-medium transition-colors duration-300 hover:text-blue-400 ${
+                  isActive(item.path) 
+                    ? 'text-blue-400 border-b-2 border-blue-400' 
+                    : 'text-white'
+                }`}
+              >
+                {item.name}
+              </Link>
+            ))}
+            {user && privateNavItems.map((item) => (
               <Link
                 key={item.name}
                 to={item.path}
@@ -100,6 +116,20 @@ const Navbar = () => {
           <div className="md:hidden bg-[#0b0c10]">
             <div className="px-4 pt-2 pb-3 space-y-1">
               {navItems.map((item) => (
+                <Link
+                  key={item.name}
+                  to={item.path}
+                  onClick={() => setIsOpen(false)}
+                  className={`block px-3 py-2 text-base font-medium hover:text-blue-400 ${
+                    isActive(item.path) 
+                      ? 'text-blue-400 bg-[#0b0c10]/50' 
+                      : 'text-white'
+                  }`}
+                >
+                  {item.name}
+                </Link>
+              ))}
+              {user && privateNavItems.map((item) => (
                 <Link
                   key={item.name}
                   to={item.path}
