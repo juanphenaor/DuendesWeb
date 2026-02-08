@@ -24,7 +24,7 @@ const NewsCard = ({ news, onClick }) => {
       {/* Imagen */}
       <div className="relative overflow-hidden">
         <img
-          src={news.image}
+          src={news.image?.startsWith('http') ? news.image : `${process.env.PUBLIC_URL}/${news.image?.replace(/^\.\/?/, '')}`}
           alt={news.title}
           className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
         />

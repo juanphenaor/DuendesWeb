@@ -154,7 +154,7 @@ const About = () => {
             </div>
             <div className="relative">
               <img
-                src="Cover.JPG"
+                src={`${process.env.PUBLIC_URL}/Cover.JPG`}
                 alt="Historia de Duendes Rugby Club"
                 className="rounded-2xl shadow-xl"
               />

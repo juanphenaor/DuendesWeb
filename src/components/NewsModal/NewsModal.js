@@ -103,7 +103,7 @@ const NewsModal = ({ news, onClose }) => {
           {/* Header con imagen */}
           <div className="relative bg-white flex-shrink-0 rounded-none sm:rounded-t-2xl overflow-hidden p-0">
             <img
-              src={news.image}
+              src={news.image?.startsWith('http') ? news.image : `${process.env.PUBLIC_URL}/${news.image?.replace(/^\.\/?/, '')}`}
               alt={news.title}
               className="w-full object-cover max-h-[50vh] sm:object-contain sm:max-h-[70vh] block"
               style={{ display: 'block', marginTop: 0 }}

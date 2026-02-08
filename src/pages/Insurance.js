@@ -71,7 +71,7 @@ function Insurance() {
     <div
       className="min-h-screen flex items-center justify-center section-padding"
       style={{
-        backgroundImage: "url('/Escudo%20con%20fondo.png')",
+        backgroundImage: `url(${process.env.PUBLIC_URL}/Escudo%20con%20fondo.png)`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",

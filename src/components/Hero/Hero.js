@@ -11,7 +11,7 @@ const Hero = () => {
     <section 
       className="relative min-h-screen flex items-center overflow-hidden"
       style={{
-        backgroundImage: `linear-gradient(rgba(11, 12, 16, 0.8), rgba(11, 12, 16, 0.6)), url('./Escudo con fondo.png')`,
+        backgroundImage: `linear-gradient(rgba(11, 12, 16, 0.8), rgba(11, 12, 16, 0.6)), url(${process.env.PUBLIC_URL}/Escudo%20con%20fondo.png)`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat'
@@ -66,7 +66,7 @@ const Hero = () => {
             <div className="relative animate-fade-in-down">
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                 <img
-                  src="./Entrenamientos.jpg"
+                  src={`${process.env.PUBLIC_URL}/Entrenamientos.jpg`}
                   alt="Entrenamientos Duendes Rugby Club"
                   className="w-full h-auto object-cover"
                 />
