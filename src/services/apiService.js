@@ -22,9 +22,16 @@ function setTokens(token, refreshToken) {
   localStorage.setItem("refreshToken", refreshToken);
 }
 
+
 function clearTokens() {
   localStorage.removeItem("token");
   localStorage.removeItem("refreshToken");
+}
+
+// Permite setear un callback global para manejar 401
+let onUnauthorized = null;
+export function setOnUnauthorized(cb) {
+  onUnauthorized = cb;
 }
 
 async function request(endpoint, options = {}) {
@@ -39,6 +46,11 @@ async function request(endpoint, options = {}) {
     ...options,
     headers,
   });
+  if (response.status === 401 && typeof onUnauthorized === 'function') {
+    onUnauthorized();
+    // Opcional: podrías lanzar un error o retornar null
+    return { success: false, error: 'Unauthorized' };
+  }
   const data = await response.json();
   return data;
 }
@@ -49,4 +61,5 @@ export default {
   setTokens,
   clearTokens,
   request,
+  setOnUnauthorized,
 };

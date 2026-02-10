@@ -16,6 +16,16 @@ export function AuthProvider({ children }) {
       setUser({}); // Placeholder, decodifica si lo necesitas
     }
     setLoading(false);
+
+    // Configura el callback global para logout automático en 401
+    apiService.setOnUnauthorized(() => {
+      authService.logout();
+      setUser(null);
+    });
+    // Limpieza opcional si el componente se desmonta
+    return () => {
+      apiService.setOnUnauthorized(null);
+    };
   }, []);
 
   const login = async (username, password) => {
