@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../auth/AuthProvider';
+import { getUserEmail, getUserRoles } from '../../auth/jwtUtils';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isTop, setIsTop] = useState(true);
   const location = useLocation();
+  // Extraer email y roles del usuario autenticado
+  const email = getUserEmail();
+  const roles = getUserRoles();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,6 +28,8 @@ const Navbar = () => {
   ];
   const privateNavItems = [
     { name: 'Seguros', path: '/seguros' },
+    // Ejemplo: solo mostrar "Usuarios" si el rol es "admin"
+    ...(roles.includes('admin') ? [{ name: 'Usuarios', path: '/usuarios' }] : []),
   ];
   const handleLogout = () => {
     logout();
@@ -38,14 +44,19 @@ const Navbar = () => {
     }`}>
       <div className="container-custom">
         <div className="flex items-center justify-between h-16 lg:h-20">
-          {/* Logo */}
-          <Link to="/" className="hover:opacity-80 transition-opacity duration-300">
-            <img 
-              src="icon.PNG" 
-              alt="Duendes Rugby Club" 
-              className="w-10 h-10 lg:w-12 lg:h-12 object-contain"
-            />
-          </Link>
+          {/* Logo + Email */}
+          <div className="flex items-center">
+            <Link to="/" className="hover:opacity-80 transition-opacity duration-300">
+              <img 
+                src="icon.PNG" 
+                alt="Duendes Rugby Club" 
+                className="w-10 h-10 lg:w-12 lg:h-12 object-contain"
+              />
+            </Link>
+            {email && (
+              <span className="ml-2 text-white text-sm font-medium">{email}</span>
+            )}
+          </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
