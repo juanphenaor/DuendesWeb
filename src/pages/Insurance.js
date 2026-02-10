@@ -161,7 +161,8 @@ function Insurance() {
           >
             Anterior
           </button>
-          <span className="text-blue-200">
+          <span className="text-blue-200"
+            style={{ display: (loading) ? 'none' : undefined }}>
             Página {page} de {totalPages}
           </span>
           <button
