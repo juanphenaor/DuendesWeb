@@ -16,6 +16,7 @@ export default function InsuranceListMobile({ seguros, onEdit }) {
               <div>
                 <div className="text-blue-100 font-semibold text-base">{seguro.name}</div>
                 <div className="text-blue-300 text-sm">Póliza: {seguro.number}</div>
+                <div className="text-blue-400 text-xs mt-1">Vence: {new Date(seguro.expirationDate).toLocaleDateString()}</div>
               </div>
               <button
                 className="p-2 ml-4 rounded-full hover:bg-blue-700 focus:outline-none"
