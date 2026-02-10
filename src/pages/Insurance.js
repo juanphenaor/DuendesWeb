@@ -46,6 +46,11 @@ function Insurance() {
     // eslint-disable-next-line
   }, [fetchSeguros, sortBy, page]);
 
+  // Scroll to top when page changes
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [page]);
+
   const handleFilterChange = (e) => {
     const value = e.target.value;
     setFilter(value);

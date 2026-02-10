@@ -41,43 +41,44 @@ function Login() {
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
+        backgroundColor: '#0b0c10',
       }}
     >
-      <div className="card w-full max-w-md bg-white/90 backdrop-blur-md p-8">
-        <h2 className="text-3xl font-bold mb-6 text-center text-primary-600">Inicio de Sesión</h2>
+      <div className="container-custom w-full max-w-lg bg-[#0b0c10]/70 backdrop-blur-md rounded-xl p-8 shadow-lg">
+        <h2 className="text-3xl font-bold mb-6 text-center text-blue-200">Inicio de Sesión</h2>
         <form className="space-y-6" onSubmit={handleSubmit}>
           <div>
-            <label htmlFor="email" className="block text-gray-700 font-semibold mb-2">Email</label>
+            <label htmlFor="email" className="block text-blue-200 font-semibold mb-2">Email</label>
             <input
               type="text"
               id="email"
               name="email"
-              className="w-full px-4 py-2 border border-primary-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-400"
+              className="w-full px-4 py-2 border border-blue-900 bg-blue-900/80 text-blue-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 placeholder:text-blue-300"
               placeholder="Ingresa tu email"
               autoComplete="username"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            {errors.email && <p className="text-red-600 text-sm mt-1">{errors.email}</p>}
+            {errors.email && <p className="text-red-300 text-sm mt-1 drop-shadow-md">{errors.email}</p>}
           </div>
           <div>
-            <label htmlFor="password" className="block text-gray-700 font-semibold mb-2">Contraseña</label>
+            <label htmlFor="password" className="block text-blue-200 font-semibold mb-2">Contraseña</label>
             <input
               type="password"
               id="password"
               name="password"
-              className="w-full px-4 py-2 border border-primary-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-400"
+              className="w-full px-4 py-2 border border-blue-900 bg-blue-900/80 text-blue-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 placeholder:text-blue-300"
               placeholder="Ingresa tu contraseña"
               autoComplete="current-password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            {errors.password && <p className="text-red-600 text-sm mt-1">{errors.password}</p>}
+            {errors.password && <p className="text-red-300 text-sm mt-1 drop-shadow-md">{errors.password}</p>}
           </div>
-          {generalError && <p className="text-red-600 text-center text-sm mb-2">{generalError}</p>}
+          {generalError && <p className="text-red-300 text-center text-sm mb-2 drop-shadow-md">{generalError}</p>}
           <button
             type="submit"
-            className="btn-primary w-full"
+            className="bg-blue-700 hover:bg-blue-800 text-blue-100 font-semibold px-5 py-2 rounded shadow transition w-full disabled:opacity-60"
             disabled={loading}
           >
             {loading ? "Ingresando..." : "Ingresar"}
