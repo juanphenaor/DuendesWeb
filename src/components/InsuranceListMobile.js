@@ -2,7 +2,7 @@ import React from "react";
 
 export default function InsuranceListMobile({ seguros, onEdit }) {
   return (
-    <ul className="divide-y divide-blue-800 bg-[#0b0c10]/60 rounded-xl overflow-hidden shadow">
+    <ul className="bg-[#0b0c10]/60 rounded-xl overflow-hidden shadow">
       {seguros.length === 0 ? (
         <li className="py-8 text-center text-blue-300">No hay registros.</li>
       ) : (
