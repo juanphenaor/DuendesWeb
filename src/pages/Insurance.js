@@ -154,9 +154,10 @@ function Insurance() {
         </div>
         <div className="flex items-center justify-between mt-6">
           <button
-            className="btn-outline border-blue-400 text-blue-200 hover:bg-blue-400 hover:text-white"
+            className="btn-outline border-blue-400 text-blue-200 hover:bg-blue-400 hover:text-white cursor-pointer"
             onClick={handlePrevious}
             disabled={!hasPrevious || loading}
+            style={{ display: (!hasPrevious || loading) ? 'none' : undefined }}
           >
             Anterior
           </button>
@@ -164,9 +165,10 @@ function Insurance() {
             Página {page} de {totalPages}
           </span>
           <button
-            className="btn-outline border-blue-400 text-blue-200 hover:bg-blue-400 hover:text-white"
+            className="btn-outline border-blue-400 text-blue-200 hover:bg-blue-400 hover:text-white cursor-pointer"
             onClick={handleNext}
             disabled={!hasNext || loading}
+            style={{ display: (!hasNext || loading) ? 'none' : undefined }}
           >
             Siguiente
           </button>
