@@ -1,10 +1,14 @@
 import React, { useState, useCallback, useEffect } from "react";
 import InsuranceModal from "../components/InsuranceModal/InsuranceModal";
+import InsuranceListMobile from "../components/InsuranceListMobile";
+import InsuranceTable from "../components/InsuranceTable";
+import useIsMobile from "../hooks/useIsMobile";
 import apiService from "../services/apiService";
 
 export default Insurance;
 
 function Insurance() {
+    const isMobile = useIsMobile();
   const [seguros, setSeguros] = useState([]);
   const [filter, setFilter] = useState("");
   const [sortBy, setSortBy] = useState("Name");
@@ -102,77 +106,52 @@ function Insurance() {
             + Agregar
           </button>
         </div>
-        <div className="overflow-x-auto rounded-lg shadow mt-4 relative">
-          {loading && (
-            <div className="absolute inset-0 flex items-center justify-center bg-blue-900/70 backdrop-blur-sm z-10">
-              <span className="text-blue-200 text-lg font-semibold">Buscando...</span>
-            </div>
-          )}
-          <table className="min-w-full bg-slate-950 text-blue-100">
-            <thead>
-              <tr>
-                <th className="px-4 py-3 text-left font-semibold tracking-wider">Nombre</th>
-                <th className="px-4 py-3 text-left font-semibold tracking-wider">Número</th>
-                <th className="px-4 py-3 text-left font-semibold tracking-wider">Teléfono</th>
-                <th className="px-4 py-3 text-left font-semibold tracking-wider">Monto</th>
-                <th className="px-4 py-3 text-left font-semibold tracking-wider cursor-pointer select-none" onClick={() => handleSort('ExpirationDate')}>Fecha de Expiración {sortBy === 'ExpirationDate' && <span className="text-blue-400">▲</span>}</th>
-                <th className="px-2 py-3 w-10"></th>
-              </tr>
-            </thead>
-            <tbody>
-              {seguros.length === 0 && !loading ? (
-                <tr>
-                  <td colSpan={6} className="text-center py-8 text-blue-300">No hay registros.</td>
-                </tr>
-              ) : (
-                seguros.map((seguro, idx) => (
-                  <tr
-                    key={seguro.id}
-                    className={`!text-white transition-colors ${idx % 2 === 0 ? 'bg-slate-900' : 'bg-blue-950'} hover:bg-blue-900`}
-                  >
-                    <td className="px-4 py-4 whitespace-nowrap">{seguro.name}</td>
-                    <td className="px-4 py-4 whitespace-nowrap">{seguro.number}</td>
-                    <td className="px-4 py-4 whitespace-nowrap">{seguro.contactPhone}</td>
-                    <td className="px-4 py-4 whitespace-nowrap">${seguro.coverageAmount.toLocaleString('es-AR')}</td>
-                    <td className="px-4 py-4 whitespace-nowrap">{new Date(seguro.expirationDate).toLocaleDateString()}</td>
-                    <td className="px-2 py-4 text-center">
-                      <button
-                        className="p-1 rounded hover:bg-blue-700 focus:outline-none"
-                        title="Editar"
-                        onClick={() => setModalOpen(seguro)}
-                      >
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 text-white">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M16.862 4.487a2.1 2.1 0 1 1 2.97 2.97L8.466 18.823a4.2 4.2 0 0 1-1.768 1.06l-3.18.954a.6.6 0 0 1-.741-.741l.954-3.18a4.2 4.2 0 0 1 1.06-1.768L16.862 4.487Zm0 0a2.1 2.1 0 0 1 2.97 2.97" />
-                        </svg>
-                      </button>
-                    </td>
-                  </tr>
-                ))
-              )}
-            </tbody>
-          </table>
-        </div>
-        <div className="flex items-center justify-between mt-6">
-          <button
-            className="btn-outline border-blue-400 text-blue-200 hover:bg-blue-400 hover:text-white cursor-pointer"
-            onClick={handlePrevious}
-            disabled={!hasPrevious || loading}
-            style={{ display: (!hasPrevious || loading) ? 'none' : undefined }}
-          >
-            Anterior
-          </button>
-          <span className="text-blue-200"
-            style={{ display: (loading) ? 'none' : undefined }}>
+        {isMobile ? (
+          <div className="mt-4 relative">
+            {loading && (
+              <div className="absolute inset-0 flex items-center justify-center bg-blue-900/70 backdrop-blur-sm z-10 rounded-xl">
+                <span className="text-blue-200 text-lg font-semibold">Buscando...</span>
+              </div>
+            )}
+            <InsuranceListMobile seguros={seguros} onEdit={setModalOpen} />
+          </div>
+        ) : (
+          <InsuranceTable
+            seguros={seguros}
+            loading={loading}
+            sortBy={sortBy}
+            handleSort={handleSort}
+            setModalOpen={setModalOpen}
+          />
+        )}
+        <div className={`flex items-center mt-6 ${(!hasPrevious && !hasNext) || loading ? 'justify-center' : 'justify-around'}`}>
+          {hasPrevious && !loading ? (
+            <button
+              className="p-2 rounded-full border border-blue-400 text-blue-200 hover:bg-blue-400 hover:text-white transition disabled:opacity-60"
+              onClick={handlePrevious}
+              disabled={!hasPrevious || loading}
+              aria-label="Anterior"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+              </svg>
+            </button> 
+          ) : <div className="w-10" />}
+          <span className="text-blue-200 text-base font-medium" style={{ display: loading ? 'none' : undefined }}>
             Página {page} de {totalPages}
-          </span>
-          <button
-            className="btn-outline border-blue-400 text-blue-200 hover:bg-blue-400 hover:text-white cursor-pointer"
-            onClick={handleNext}
-            disabled={!hasNext || loading}
-            style={{ display: (!hasNext || loading) ? 'none' : undefined }}
-          >
-            Siguiente
-          </button>
+          </span>                 
+          {hasNext && !loading ? ( 
+            <button
+              className="p-2 rounded-full border border-blue-400 text-blue-200 hover:bg-blue-400 hover:text-white transition disabled:opacity-60"
+              onClick={handleNext}
+              disabled={!hasNext || loading}
+              aria-label="Siguiente"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+              </svg>
+            </button>
+          ) : <div className="w-10" />}
         </div>
       </div>
     </div>
