@@ -1,11 +1,11 @@
 {
   "files": {
     "main.css": "/DuendesWeb/static/css/main.e130f3e3.css",
-    "main.js": "/DuendesWeb/static/js/main.05c9022c.js",
+    "main.js": "/DuendesWeb/static/js/main.bb2c9ed6.js",
     "index.html": "/DuendesWeb/index.html"
   },
   "entrypoints": [
     "static/css/main.e130f3e3.css",
-    "static/js/main.05c9022c.js"
+    "static/js/main.bb2c9ed6.js"
   ]
 }
