@@ -92,7 +92,7 @@ function Users() {
         onSuccess={() => fetchUsers({ filter, sortBy, page })}
         initialData={modalOpen && typeof modalOpen === 'object' ? modalOpen : null}
       />
-      <div className="container-custom w-full max-w-4xl bg-[#0b0c10]/40 backdrop-blur-sm rounded-xl p-8 shadow-lg">
+      <div className="container-custom w-full bg-[#0b0c10]/40 backdrop-blur-sm rounded-xl p-8 shadow-lg">
         <h1 className="text-3xl font-bold text-blue-200 mb-6 text-center">Usuarios</h1>
         <div className="mb-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <input

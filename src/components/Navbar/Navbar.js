@@ -28,8 +28,7 @@ const Navbar = () => {
   ];
   const privateNavItems = [
     { name: 'Seguros', path: '/seguros' },
-    // Ejemplo: solo mostrar "Usuarios" si el rol es "admin"
-    ...(roles.includes('admin') ? [{ name: 'Usuarios', path: '/usuarios' }] : []),
+    { name: 'Usuarios', path: '/usuarios' },
   ];
   const handleLogout = () => {
     logout();

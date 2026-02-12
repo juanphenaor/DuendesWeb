@@ -1,3 +1,13 @@
+  /* Oculta el icono nativo del input date en Chrome y Edge */
+  .date-white-icon::-webkit-calendar-picker-indicator {
+    opacity: 0;
+    display: none;
+  }
+  /* Oculta el icono nativo en Firefox */
+  .date-white-icon::-moz-calendar-picker-indicator {
+    opacity: 0;
+    display: none;
+  }
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -55,6 +65,7 @@
   .animate-fade-in-down {
     animation: fadeInDown 1s ease-out;
   }
+
 }
 
 @keyframes fadeInUp {

@@ -8,26 +8,35 @@ export default function UsersListMobile({ users, onEdit }) {
       ) : (
         users.map((user, idx) => {
           const bgColor = idx % 2 === 0 ? 'bg-slate-900' : 'bg-blue-950';
+          const tooltipMsg = user.validInsurance
+            ? 'Usuario al día y con seguro vigente'
+            : 'Usuario sin seguro vigente';
           return (
             <li
               key={user.id}
-              className={`flex items-center justify-between px-4 py-4 transition-colors ${bgColor} hover:bg-blue-900`}
+              className={`flex items-center justify-between px-4 py-4 transition-colors ${bgColor} hover:bg-blue-900 cursor-pointer`}
+              onClick={() => onEdit(user)}
             >
-              <div>
+              <div className="relative group mr-4">
+                <span
+                  className={`inline-block w-6 h-6 rounded-full border-2 shadow-lg ${user.validInsurance ? 'bg-blue-400 border-blue-700' : 'bg-red-400 border-red-700'}`}
+                  style={{
+                    boxShadow: user.validInsurance
+                      ? '0 0 12px 4px #3b82f6, 0 0 2px 1px #60a5fa'
+                      : '0 0 12px 4px #ef4444, 0 0 2px 1px #f87171',
+                    display: 'inline-block'
+                  }}
+                ></span>
+                <div className="absolute left-8 top-1/2 -translate-y-1/2 bg-slate-800 text-white text-xs rounded px-2 py-1 shadow-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-20">
+                  {tooltipMsg}
+                </div>
+              </div>
+              <div className="flex-1">
                 <div className="text-blue-100 font-semibold text-base">{user.name} {user.lastName}</div>
                 <div className="text-blue-300 text-sm">Documento: {user.document}</div>
                 <div className="text-blue-400 text-xs mt-1">Seguro: {user.insuranceName || '-'}</div>
                 <div className="text-blue-400 text-xs mt-1">Contacto: {user.emergencyContactName} ({user.emergencyContactPhone})</div>
               </div>
-              <button
-                className="p-2 ml-4 rounded-full hover:bg-blue-700 focus:outline-none"
-                title="Editar"
-                onClick={() => onEdit(user)}
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-blue-100">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M16.862 4.487a2.1 2.1 0 1 1 2.97 2.97L8.466 18.823a4.2 4.2 0 0 1-1.768 1.06l-3.18.954a.6.6 0 0 1-.741-.741l.954-3.18a4.2 4.2 0 0 1 1.06-1.768L16.862 4.487Zm0 0a2.1 2.1 0 0 1 2.97 2.97" />
-                </svg>
-              </button>
             </li>
           );
         })

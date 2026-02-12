@@ -11,6 +11,7 @@ export default function UsersTable({ users, loading, sortBy, handleSort, setModa
       <table className="min-w-full bg-slate-950 text-blue-100">
         <thead>
           <tr>
+            <th className="px-2 py-3 w-10 text-left font-semibold tracking-wider">Habilitado</th>
             <th className="px-4 py-3 text-left font-semibold tracking-wider">Nombre</th>
             <th className="px-4 py-3 text-left font-semibold tracking-wider">Apellido</th>
             <th className="px-4 py-3 text-left font-semibold tracking-wider">Documento</th>
@@ -35,10 +36,26 @@ export default function UsersTable({ users, loading, sortBy, handleSort, setModa
                 key={user.id}
                 className={`!text-white transition-colors ${idx % 2 === 0 ? 'bg-slate-900' : 'bg-blue-950'} hover:bg-blue-900`}
               >
+                <td className="px-2 py-4 text-center">
+                  <div className="relative group inline-block">
+                    <span
+                      className={`inline-block w-6 h-6 rounded-full border-2 shadow-lg ${user.validInsurance ? 'bg-blue-400 border-blue-700' : 'bg-red-400 border-red-700'}`}
+                      style={{
+                        boxShadow: user.validInsurance
+                          ? '0 0 12px 4px #3b82f6, 0 0 2px 1px #60a5fa'
+                          : '0 0 12px 4px #ef4444, 0 0 2px 1px #f87171',
+                        display: 'inline-block'
+                      }}
+                    ></span>
+                    <div className="absolute left-8 top-1/2 -translate-y-1/2 bg-slate-800 text-white text-xs rounded px-2 py-1 shadow-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-20">
+                      {user.validInsurance ? 'Usuario al día y con seguro vigente' : 'Usuario sin seguro vigente'}
+                    </div>
+                  </div>
+                </td>
                 <td className="px-4 py-4 whitespace-nowrap">{user.name}</td>
                 <td className="px-4 py-4 whitespace-nowrap">{user.lastName}</td>
                 <td className="px-4 py-4 whitespace-nowrap">{user.document}</td>
-                <td className="px-4 py-4 whitespace-nowrap">{user.gender === 0 ? 'Masculino' : user.gender === 1 ? 'Femenino' : '-'}</td>
+                <td className="px-4 py-4 whitespace-nowrap">{user.gender}</td>
                 <td className="px-4 py-4 whitespace-nowrap">{user.birthdate ? new Date(user.birthdate).toLocaleDateString() : '-'}</td>
                 <td className="px-4 py-4 whitespace-nowrap">{user.eps}</td>
                 <td className="px-4 py-4 whitespace-nowrap">{user.fullAddress}</td>
