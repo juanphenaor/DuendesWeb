@@ -55,7 +55,7 @@ async function request(endpoint, options = {}) {
   return data;
 }
 
-export default {
+const apiService = {
   getToken,
   getRefreshToken,
   setTokens,
@@ -63,3 +63,4 @@ export default {
   request,
   setOnUnauthorized,
 };
+export default apiService;
