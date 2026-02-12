@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect } from "react";
-import InsuranceModal from "../components/InsuranceModal/InsuranceModal";
+import InsuranceModal from "../components/Insurance/InsuranceModal";
 import InsuranceListMobile from "../components/Insurance/InsuranceListMobile";
 import InsuranceTable from "../components/Insurance/InsuranceTable";
 import useIsMobile from "../hooks/useIsMobile";
