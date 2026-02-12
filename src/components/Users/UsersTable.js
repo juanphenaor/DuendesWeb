@@ -2,7 +2,7 @@ import React from "react";
 
 export default function UsersTable({ users, loading, sortBy, handleSort, setModalOpen }) {
   return (
-    <div className="overflow-x-auto rounded-lg shadow mt-4 relative">
+    <div className="overflow-x-auto rounded-lg shadow mt-4 relative user-modal-scroll pr-4">
       {loading && (
         <div className="absolute inset-0 flex items-center justify-center bg-blue-900/70 backdrop-blur-sm z-10">
           <span className="text-blue-200 text-lg font-semibold">Buscando...</span>

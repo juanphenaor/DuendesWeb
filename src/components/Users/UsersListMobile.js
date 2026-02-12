@@ -15,7 +15,6 @@ export default function UsersListMobile({ users, onEdit }) {
             <li
               key={user.id}
               className={`flex items-center justify-between px-4 py-4 transition-colors ${bgColor} hover:bg-blue-900 cursor-pointer`}
-              onClick={() => onEdit(user)}
             >
               <div className="relative group mr-4">
                 <span
@@ -26,12 +25,13 @@ export default function UsersListMobile({ users, onEdit }) {
                       : '0 0 12px 4px #ef4444, 0 0 2px 1px #f87171',
                     display: 'inline-block'
                   }}
+                  onClick={e => e.stopPropagation()}
                 ></span>
                 <div className="absolute left-8 top-1/2 -translate-y-1/2 bg-slate-800 text-white text-xs rounded px-2 py-1 shadow-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-20">
                   {tooltipMsg}
                 </div>
               </div>
-              <div className="flex-1">
+              <div className="flex-1" onClick={() => onEdit(user)}>
                 <div className="text-blue-100 font-semibold text-base">{user.name} {user.lastName}</div>
                 <div className="text-blue-300 text-sm">Documento: {user.document}</div>
                 <div className="text-blue-400 text-xs mt-1">Seguro: {user.insuranceName || '-'}</div>
