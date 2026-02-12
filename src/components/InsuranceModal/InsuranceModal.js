@@ -51,13 +51,11 @@ function InsuranceModal({ open, onClose, onSuccess, initialData }) {
         url = `/Insurance/${initialData.id}`;
         method = "put";
       }
-      console.log("[InsuranceModal] Enviando request:", { url, method, payload });
       const options = {
         method,
         body: JSON.stringify(payload),
       };
       const response = await apiService.request(url, options);
-      console.log("[InsuranceModal] Respuesta del endpoint:", response);
       if (response.success) {
         onSuccess();
         onClose();

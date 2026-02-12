@@ -73,7 +73,6 @@ const NewsModal = ({ news, onClose }) => {
         }, 3000);
       }
     } catch (error) {
-      console.log('Error al compartir:', error);
       
       // Fallback adicional si clipboard también falla
       const shareUrl = window.location.href;
